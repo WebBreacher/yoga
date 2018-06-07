@@ -8,7 +8,7 @@
   <link href="files/vis-network.css" rel="stylesheet" type="text/css">
 
   <style type="text/css">
-      #mynetwork {
+      #osintprocess {
           width: 1100px;
           height: 450px;
       }
@@ -22,7 +22,7 @@
     Source is on Github at <a href="https://github.com/WebBreacher/osintprocess">https://github.com/WebBreacher/osintprocess</a>
 </p>
 
-<div id="mynetwork">
+<div id="osintprocess">
   <div class="vis-network" style="position: relative; overflow: hidden; touch-action: pan-y; -moz-user-select: none; width: 100%; height: 100%;" tabindex="900">
     <canvas style="position: relative; touch-action: none; -moz-user-select: none; width: 100%; height: 100%;" width="1100" height="550" googl="true"></canvas>
     <div class="vis-manipulation" style="display: none;">
@@ -72,7 +72,7 @@
     ]);
 
     // create a network
-    var container = document.getElementById('mynetwork');
+    var container = document.getElementById('osintprocess');
     var data = {
         nodes: nodes,
         edges: edges
@@ -80,25 +80,14 @@
 
     var options = {
 		interaction:{hover:true},
-		manipulation: {
-			enabled: true
-		},
+
         autoResize: true,
         height: '100%',
         width: '100%',
 
-        manipulation: {
-            addEdge: function(edgeData,callback) {
-              if (edgeData.from === edgeData.to) {
-                var r = confirm("Do you want to connect the node to itself?");
-                if (r === true) {
-                  callback(edgeData);
-                }
-              }
-              else {
-                callback(edgeData);
-              }
-            }
+        edges:{
+          shadow: true,
+          smooth: true
         },
 
         physics:{
