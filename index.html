@@ -87,7 +87,26 @@
 
         edges:{
           shadow: true,
-          smooth: true
+          smooth: true,
+          chosen: true,
+          color: {
+            color:'#848484',
+            highlight:'#000000',
+            hover: '#0000ff',
+            inherit: 'from',
+            opacity:1.0
+          }
+        },
+
+        nodes:{
+          shadow:{
+            enabled: false,
+            color: 'rgba(0,0,0,0.5)',
+            size:10,
+            x:5,
+            y:5
+          },
+          shape: 'box'
         },
 
         physics:{
@@ -139,10 +158,7 @@
 
     var network = new vis.Network(container, data, options);
 
-
 </script>
 
-
-
-
-</body></html>
+</body>
+</html>
