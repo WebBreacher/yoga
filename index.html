@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>OSINT Process</title>
+
+  <script type="text/javascript" src="files/vis.js"></script>
+  <link href="files/vis-network.css" rel="stylesheet" type="text/css">
+
+  <style type="text/css">
+      #mynetwork {
+          width: 1100px;
+          height: 450px;
+      }
+  </style>
+</head>
+<body googl="true">
+
+<p>
+    <h1>OSINT Process Map</h1><br>
+    Created by <a href="https://twitter.com/webbreacher">Micah "WebBreacher" Hoffman</a>. <br><br>
+    Source is on Github at <a href="https://github.com/WebBreacher/osintprocess">https://github.com/WebBreacher/osintprocess</a>
+</p>
+
+<div id="mynetwork">
+  <div class="vis-network" style="position: relative; overflow: hidden; touch-action: pan-y; -moz-user-select: none; width: 100%; height: 100%;" tabindex="900">
+    <canvas style="position: relative; touch-action: none; -moz-user-select: none; width: 100%; height: 100%;" width="1100" height="550" googl="true"></canvas>
+    <div class="vis-manipulation" style="display: none;">
+    </div>
+    <div class="vis-edit-mode" style="display: block;">
+      <div class="vis-button vis-edit vis-edit-mode" style="touch-action: pan-y; -moz-user-select: none;">
+      </div>
+    </div>
+    <div class="vis-close" style="display: none; touch-action: pan-y;">
+    </div>
+    <div class="vis-tooltip" style="left: 0px; top: 0px; visibility: hidden;">
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+    // create an array with nodes
+    var nodes = new vis.DataSet([
+        {id: 1, label: 'Email Address', title: 'Ex: buttercup@example.com'},
+        {id: 2, label: 'Username', title: 'Ex: DreadPirateRoberts'},
+        {id: 3, label: 'Phone Number', title: 'Ex: +15558675309'},
+        {id: 4, label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA'},
+        {id: 5, label: 'People Search Engine', title: 'Ex: pipl.com'},
+        {id: 6, label: 'Search Engine', title: 'Ex. duckduckgo.com'},
+        {id: 7, label: 'Person: First Last Name', title: 'Ex: Johan Smith'},
+        {id: 8, label: 'Avatar/Profile Pic', title: 'An image from a social media account'},
+        {id: 9, label: 'Social Media Account', title: 'Ex: Account on facebook.com'},
+        {id: 10, label: 'Image Search Engine', title: 'Ex: images.google.com'}
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+        {from: 1, to: 9, arrows: 'to', title: 'Look for email on social media'},
+        {from: 1, to: 2, arrows: 'to', title: 'Take local part off email'},
+        {from: 3, to: 5, arrows: 'to', title: 'Search for this'},
+        {from: 4, to: 6, arrows: 'to', title: 'Search for this'},
+        {from: 2, to: 5, arrows: 'to', title: 'Search for this'},
+        {from: 8, to: 10, arrows: 'to', title: 'Search for this'},
+        {from: 9, to: 8, arrows: 'to', title: 'Record this'},
+        {from: 3, to: 6, arrows: 'to', title: 'Search for this'},
+        {from: 1, to: 5, arrows: 'to', title: 'Search for this'},
+        {from: 7, to: 6, arrows: 'to', title: 'Search for this'},
+        {from: 7, to: 5, arrows: 'to', title: 'Search for this'},
+        {from: 1, to: 6, arrows: 'to', title: 'Search for this'}
+    ]);
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+
+    var options = {
+		interaction:{hover:true},
+		manipulation: {
+			enabled: true
+		},
+        autoResize: true,
+        height: '100%',
+        width: '100%',
+
+        manipulation: {
+            addEdge: function(edgeData,callback) {
+              if (edgeData.from === edgeData.to) {
+                var r = confirm("Do you want to connect the node to itself?");
+                if (r === true) {
+                  callback(edgeData);
+                }
+              }
+              else {
+                callback(edgeData);
+              }
+            }
+        },
+
+        physics:{
+            enabled: true,
+            barnesHut: {
+              gravitationalConstant: -2000,
+              centralGravity: 0.3,
+              springLength: 140,
+              springConstant: 0.04,
+              damping: 0.09,
+              avoidOverlap: 0
+            },
+            forceAtlas2Based: {
+              gravitationalConstant: -50,
+              centralGravity: 0.01,
+              springConstant: 0.08,
+              springLength: 100,
+              damping: 0.4,
+              avoidOverlap: 0
+            },
+            repulsion: {
+              centralGravity: 0.2,
+              springLength: 200,
+              springConstant: 0.05,
+              nodeDistance: 100,
+              damping: 0.09
+            },
+            hierarchicalRepulsion: {
+              centralGravity: 0.0,
+              springLength: 100,
+              springConstant: 0.01,
+              nodeDistance: 120,
+              damping: 0.09
+            },
+            maxVelocity: 50,
+            minVelocity: 0.1,
+            solver: 'barnesHut',
+            stabilization: {
+              enabled: true,
+              iterations: 1000,
+              updateInterval: 100,
+              onlyDynamicEdges: false,
+              fit: true
+            },
+            timestep: 0.5,
+            adaptiveTimestep: true
+        }
+    };
+
+    var network = new vis.Network(container, data, options);
+
+
+</script>
+
+
+
+
+</body></html>
