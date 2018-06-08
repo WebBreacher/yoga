@@ -37,32 +37,48 @@
 
     // create an array with nodes
     var nodes = new vis.DataSet([
+        // Facts/data
         {id: 1, label: 'Email Address', title: 'Ex: buttercup@example.com', group: 'dataelements'},
         {id: 2, label: 'Username', title: 'Ex: DreadPirateRoberts', group: 'dataelements'},
         {id: 3, label: 'Phone Number', title: 'Ex: +15558675309', group: 'dataelements'},
         {id: 4, label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA', group: 'dataelements'},
-        {id: 5, label: 'People Search Engine', title: 'Ex: pipl.com', group: 'searches'},
-        {id: 6, label: 'Search Engine', title: 'Ex. duckduckgo.com', group: 'searches'},
-        {id: 7, label: 'Person: First Last Name', title: 'Ex: Johan Smith', group: 'dataelements'},
-        {id: 8, label: 'Avatar/Profile Pic', title: 'An image from a social media account', group: 'searches'},
-        {id: 9, label: 'Social Media Account', title: 'Ex: Account on facebook.com', group: 'dataelements'},
-        {id: 10, label: 'Image Search Engine', title: 'Ex: images.google.com', group: 'searches'}
+        {id: 5, label: 'Person: First Last Name', title: 'Ex: Johan Smith', group: 'dataelements'},
+        {id: 6, label: 'Avatar/Profile Pic', title: 'An image from a social media account', group: 'dataelements'},
+        {id: 7, label: 'Social Media Account', title: 'Ex: Account on facebook.com', group: 'dataelements'},
+        {id: 8, label: 'Domain Name', title: 'Ex: www.sec487.info', group: 'dataelements'},
+        {id: 9, label: 'IP address', title: 'Ex: 192.168.1.2', group: 'dataelements'},
+
+
+        // Actions
+        {id: 100, label: 'People Search Engine', title: 'Ex: pipl.com', group: 'searches'},
+        {id: 101, label: 'Search Engine', title: 'Ex. duckduckgo.com', group: 'searches'},
+        {id: 102, label: 'Image Search Engine', title: 'Ex: images.google.com', group: 'searches'},
+        {id: 103, label: 'DNS Lookups', title: 'Ex: dig, viewdns.info', group: 'searches'},
+        {id: 104, label: 'Whois Lookups', title: 'Ex: centralops.net', group: 'searches'},
+        {id: 105, label: 'IP Geolocation Search', title: '', group: 'searches'},
+        {id: 106, label: 'IP Information Search', title: 'Ex: viewdns.info', group: 'searches'}
     ]);
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 1, to: 2, arrows: 'to', label: 'Take local part off email'},
-        {from: 1, to: 5, arrows: 'to', label: 'Search for this'},
-        {from: 1, to: 6, arrows: 'to', label: 'Search for this'},
-        {from: 1, to: 9, arrows: 'to', label: 'Look for email on social media'},
-        {from: 2, to: 5, arrows: 'to', label: 'Search for this'},
-        {from: 3, to: 5, arrows: 'to', label: 'Search for this'},
-        {from: 3, to: 6, arrows: 'to', label: 'Search for this'},
-        {from: 4, to: 6, arrows: 'to', label: 'Search for this'},
-        {from: 7, to: 5, arrows: 'to', label: 'Search for this'},
-        {from: 7, to: 6, arrows: 'to', label: 'Search for this'},
-        {from: 8, to: 10, arrows: 'to', label: 'Search for this'},
-        {from: 9, to: 8, arrows: 'to', label: 'Record this'}
+        {from: 1, to: 100, arrows: 'to', label: 'Search for this'},
+        {from: 1, to: 101, arrows: 'to', label: 'Search for this'},
+        {from: 1, to: 7, arrows: 'to', label: 'Look for email on social media'},
+        {from: 2, to: 100, arrows: 'to', label: 'Search for this'},
+        {from: 2, to: 101, arrows: 'to', label: 'Search for this'},
+        {from: 3, to: 100, arrows: 'to', label: 'Search for this'},
+        {from: 3, to: 101, arrows: 'to', label: 'Search for this'},
+        {from: 4, to: 101, arrows: 'to', label: 'Search for this'},
+        {from: 5, to: 100, arrows: 'to', label: 'Search for this'},
+        {from: 5, to: 101, arrows: 'to', label: 'Search for this'},
+        {from: 6, to: 102, arrows: 'to', label: 'Search for this'},
+        {from: 6, to: 7, arrows: 'to', label: 'Search for this'},
+        {from: 7, to: 100, arrows: 'to', label: 'Search for this'},
+        {from: 8, to: 101, arrows: 'to', label: 'Search for this'},
+        {from: 8, to: 103, arrows: 'to', label: 'Search for this'},
+        {from: 9, to: 101, arrows: 'to', label: 'Search for this'},
+        {from: 9, to: 105, arrows: 'to', label: 'Search for this'},
+        {from: 9, to: 106, arrows: 'to', label: 'Search for this'}
     ]);
 
     // create a network
