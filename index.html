@@ -9,7 +9,7 @@
 
     <style type="text/css">
         #osintprocess {
-            width: 90%;
+            width: 100%;
             height: 650px;
             border: 1px solid lightgray;
         }
@@ -58,7 +58,8 @@
         {id: 112, label: 'Examine for Services', title: 'Ex: Visit website', group: 'searches'},
         {id: 113, label: 'Search Engine site:XXXX', title: 'Ex: site:sec487.info', group: 'searches'},
         {id: 114, label: 'Google Analytics', title: 'Ex: Look for UA- in Page Source', group: 'searches'},
-        {id: 115, label: 'Examine Files for Metadata', title: 'Ex: Use FOCA on domain', group: 'searches'}
+        {id: 115, label: 'Examine Files for Metadata', title: 'Ex: Use FOCA on domain', group: 'searches'},
+        {id: 116, label: 'Examine HTTPS Certs', title: 'Ex: censys.io', group: 'searches'}
     ]);
 
     // create an array with edges
@@ -68,14 +69,18 @@
         {from: 1, to: 104, arrows: 'to'},
         {from: 1, to: 108, arrows: 'to'},
         {from: 1, to: 109, arrows: 'to'},
-        {from: 1, to: 7, arrows: 'to', label: 'Look for email on social media'},
+        {from: 1, to: 7, arrows: 'to', label: 'Look for Email on Social Media'},
         {from: 2, to: 100, arrows: 'to'},
         {from: 2, to: 101, arrows: 'to'},
+        {from: 2, to: 110, arrows: 'to'},
         {from: 2, to: 111, arrows: 'to'},
+        {from: 3, to: 7, arrows: 'to', label: 'Look for Phone on Social Media'},
         {from: 3, to: 100, arrows: 'to'},
         {from: 3, to: 101, arrows: 'to'},
+        {from: 4, to: 100, arrows: 'to'},
         {from: 4, to: 101, arrows: 'to'},
         {from: 4, to: 107, arrows: 'to'},
+        {from: 5, to: 7, arrows: 'to', label: 'Look for Name on Social Media'},
         {from: 5, to: 100, arrows: 'to'},
         {from: 5, to: 101, arrows: 'to'},
         {from: 5, to: 104, arrows: 'to'},
@@ -94,7 +99,8 @@
         {from: 9, to: 112, arrows: 'to'},
         {from: 9, to: 113, arrows: 'to'},
         {from: 112, to: 114, arrows: 'to'},
-        {from: 112, to: 115, arrows: 'to'}
+        {from: 112, to: 115, arrows: 'to'},
+        {from: 112, to: 116, arrows: 'to'}
     ]);
 
     // create a network
@@ -141,7 +147,6 @@
                                   highlight:'#ff0000',
                                   hover: '#ff0000'
                                 },
-                          borderWidth:1,
                           font: {color:'white'},
                           shape: 'box'
                         },
@@ -151,7 +156,6 @@
                                   highlight:'#ff0000',
                                   hover: '#ff0000'
                                 },
-                          borderWidth:1,
                           font: {color:'white'},
                           shape: 'elipse'
                         }
