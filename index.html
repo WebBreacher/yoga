@@ -9,7 +9,7 @@
 
     <style type="text/css">
         #osintprocess {
-            width: 100%;
+            width: 85%;
             height: 650px;
             border: 1px solid lightgray;
         }
@@ -25,16 +25,18 @@
   </div>
 </div>
 
+<!-- Here are the details of what is clicked and hovered over in the canvas -->
+<pre id="eventSpan"></pre>
+
 
 <script type="text/javascript">
-
     // create an array with nodes
     var nodes = new vis.DataSet([
         // Facts/data
-        {id: 1, label: 'Email Address', title: 'Ex: buttercup@example.com', group: 'dataelements'},
-        {id: 2, label: 'Username', title: 'Ex: DreadPirateRoberts', group: 'dataelements'},
-        {id: 3, label: 'Phone Number', title: 'Ex: +15558675309', group: 'dataelements'},
-        {id: 4, label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA', group: 'dataelements'},
+        {id: 'email', label: 'Email Address', title: 'Ex: buttercup@example.com', group: 'dataelements'},
+        {id: 'usrName', label: 'Username', title: 'Ex: DreadPirateRoberts', group: 'dataelements'},
+        {id: 'phoneNumber', label: 'Phone Number', title: 'Ex: +15558675309', group: 'dataelements'},
+        {id: 'address', label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA', group: 'dataelements'},
         {id: 5, label: 'Person: First Last Name', title: 'Ex: Johan Smith', group: 'dataelements'},
         {id: 6, label: 'Avatar/Profile Pic', title: 'An image from a social media account', group: 'dataelements'},
         {id: 7, label: 'Social Media Account', title: 'Ex: Account on facebook.com', group: 'dataelements'},
@@ -43,7 +45,7 @@
 
 
         // Actions
-        {id: 100, label: 'People Search Engine', title: 'Ex: pipl.com', group: 'searches'},
+        {id: 'pplsearch1', label: 'People Search Engine', title: 'Ex: pipl.com', group: 'searches'},
         {id: 101, label: 'Search Engine', title: 'Ex. duckduckgo.com', group: 'searches'},
         {id: 102, label: 'Image Search Engine', title: 'Ex: images.google.com', group: 'searches'},
         {id: 103, label: 'DNS Lookups', title: 'Ex: dig, viewdns.info', group: 'searches'},
@@ -64,23 +66,23 @@
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 1, to: 7, arrows: 'to', label: 'Look for Email on Social Media'},
-        {from: 1, to: 100, arrows: 'to'}, // email to ppl search engine
-        {from: 1, to: 101, arrows: 'to'}, // email to regular search engine
-        {from: 1, to: 104, arrows: 'to'}, // email to Whois
-        {from: 1, to: 108, arrows: 'to'}, // email to email Verification
-        {from: 1, to: 109, arrows: 'to'}, // email to breach Sites
-        {from: 1, to: 116, arrows: 'to'}, // email to Examine HTTPS Certs
-        {from: 2, to: 100, arrows: 'to'}, // username to ppl search engine
-        {from: 2, to: 101, arrows: 'to'}, // username to regular search engine
-        {from: 2, to: 110, arrows: 'to'}, // username to guess email
-        {from: 2, to: 111, arrows: 'to'}, // username to user enumeration
-        {from: 3, to: 7, arrows: 'to', label: 'Look for Phone on Social Media'}, // phone to social media
-        {from: 3, to: 100, arrows: 'to'}, // phone to ppl search engine
-        {from: 3, to: 101, arrows: 'to'}, // phone to regular search engine
-        {from: 4, to: 100, arrows: 'to'}, // address to ppl search engine
-        {from: 4, to: 101, arrows: 'to'}, // address to regular search engine
-        {from: 4, to: 107, arrows: 'to'}, // address to real estate
+        {from: 'email', to: 7, arrows: 'to', label: 'Look for Email on Social Media'},
+        {from: 'email', to: 'pplsearch1', arrows: 'to'},
+        {from: 'email', to: 101, arrows: 'to'},
+        {from: 'email', to: 104, arrows: 'to'},
+        {from: 'email', to: 108, arrows: 'to'},
+        {from: 'email', to: 109, arrows: 'to'},
+        {from: 'email', to: 116, arrows: 'to'},
+        {from: 'usrName', to: 100, arrows: 'to'},
+        {from: 'usrName', to: 101, arrows: 'to'},
+        {from: 'usrName', to: 110, arrows: 'to'},
+        {from: 'usrName', to: 111, arrows: 'to'},
+        {from: 'phoneNumber', to: 7, arrows: 'to', label: 'Look for Phone on Social Media'},
+        {from: 'phoneNumber', to: 100, arrows: 'to'},
+        {from: 'phoneNumber', to: 101, arrows: 'to'},
+        {from: 'address', to: 100, arrows: 'to'},
+        {from: 'address', to: 101, arrows: 'to'},
+        {from: 'address', to: 107, arrows: 'to'},
         {from: 5, to: 7, arrows: 'to', label: 'Look for Name on Social Media'}, // names to social media
         {from: 5, to: 100, arrows: 'to'}, // names to ppl search engine
         {from: 5, to: 101, arrows: 'to'}, // names to regular search engine
@@ -117,7 +119,7 @@
 
         edges:{
           shadow: true,
-          smooth: true,
+          smooth: false,
           chosen: true,
           color:{
                   color:'black',
@@ -200,6 +202,32 @@
     };
 
     var network = new vis.Network(container, data, options);
+
+    // These are the functions for the details pane
+    network.on("click", function (params) {
+        params.event = "[original event]";
+        document.getElementById('eventSpan').innerHTML = '<h2>Click event:</h2>' + JSON.stringify(params, null, 4);
+        console.log('click event, getNodeAt returns: ' + this.getNodeAt(params.pointer.DOM));
+    });
+    network.on("oncontext", function (params) {
+        params.event = "[original event]";
+        document.getElementById('eventSpan').innerHTML = '<h2>oncontext (right click) event:</h2>' + JSON.stringify(params, null, 4);
+    });
+    network.on("select", function (params) {
+        console.log('select Event:', params);
+    });
+    network.on("selectNode", function (params) {
+        console.log('selectNode Event:', params);
+    });
+    network.on("selectEdge", function (params) {
+        console.log('selectEdge Event:', params);
+    });
+    network.on("hoverNode", function (params) {
+        console.log('hoverNode Event:', params);
+    });
+    network.on("hoverEdge", function (params) {
+        console.log('hoverEdge Event:', params);
+    });
 
 </script>
 
