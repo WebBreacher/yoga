@@ -53,7 +53,7 @@
         {id: 107, label: 'Real Estate Sites', title: 'Ex: trulia.com', group: 'searches'},
         {id: 108, label: 'Email Verification', title: 'Ex: hunter.io', group: 'searches'},
         {id: 109, label: 'Breach Sites', title: 'Ex: haveibeenpwnd.com', group: 'searches'},
-        {id: 110, label: 'Guess at email address', title: 'XXXX@gmail.com', group: 'searches'},
+        {id: 110, label: 'Guess at email address', title: 'Ex: XXXX@gmail.com', group: 'searches'},
         {id: 111, label: 'User Enumeration', title: 'Ex: WhatsMyName Project', group: 'searches'},
         {id: 112, label: 'Examine for Services', title: 'Ex: Visit website', group: 'searches'},
         {id: 113, label: 'Search Engine site:XXXX', title: 'Ex: site:sec487.info', group: 'searches'},
@@ -85,23 +85,23 @@
         {from: 5, to: 100, arrows: 'to'}, // names to ppl search engine
         {from: 5, to: 101, arrows: 'to'}, // names to regular search engine
         {from: 5, to: 104, arrows: 'to'}, // names to Whois
-        {from: 6, to: 102, arrows: 'to'},
-        {from: 6, to: 7, arrows: 'to,from'},
-        {from: 7, to: 100, arrows: 'to'},
-        {from: 8, to: 101, arrows: 'to'},
-        {from: 8, to: 103, arrows: 'to,from'},
-        {from: 8, to: 104, arrows: 'to'},
-        {from: 8, to: 112, arrows: 'to'},
-        {from: 8, to: 113, arrows: 'to'},
-        {from: 9, to: 101, arrows: 'to'},
-        {from: 9, to: 103, arrows: 'to,from'},
-        {from: 9, to: 105, arrows: 'to'},
-        {from: 9, to: 106, arrows: 'to'},
-        {from: 9, to: 112, arrows: 'to'},
-        {from: 9, to: 113, arrows: 'to'},
-        {from: 112, to: 114, arrows: 'to'},
-        {from: 112, to: 115, arrows: 'to'},
-        {from: 112, to: 116, arrows: 'to'}
+        {from: 6, to: 102, arrows: 'to'}, // avatar to image search engine
+        {from: 6, to: 7, arrows: 'to,from'}, // avatar to social media
+        {from: 7, to: 100, arrows: 'to'}, // social media to ppl search engine
+        {from: 8, to: 101, arrows: 'to'}, // domain to regular search engine
+        {from: 8, to: 103, arrows: 'to,from'}, // domain to DNS Lookups
+        {from: 8, to: 104, arrows: 'to'}, // domain to Whois
+        {from: 8, to: 112, arrows: 'to'}, // domain to examine for services
+        {from: 8, to: 113, arrows: 'to'}, // domain to search engine for site:
+        {from: 9, to: 101, arrows: 'to'}, // IP to regular search engine
+        {from: 9, to: 103, arrows: 'to,from'}, // IP to DNS Lookups
+        {from: 9, to: 105, arrows: 'to'}, // IP to IP Geolocation Search
+        {from: 9, to: 106, arrows: 'to'}, // IP to IP Information Search
+        {from: 9, to: 112, arrows: 'to'}, // IP to examine for services
+        {from: 9, to: 113, arrows: 'to'}, // IP to search engine for site:
+        {from: 112, to: 114, arrows: 'to'}, // Examine for Services to Google Analytics
+        {from: 112, to: 115, arrows: 'to'}, // Examine for Services to Examine Files for Metadata
+        {from: 112, to: 116, arrows: 'to'} // Examine for Services to Examine HTTPS Certs
     ]);
 
     // create a network
@@ -205,7 +205,7 @@
 
 <p>
     Created by Micah "<a href="https://twitter.com/webbreacher">WebBreacher</a>" Hoffman. <br><br>
-    Source is on Github at <a href="https://github.com/WebBreacher/osintprocess">https://github.com/WebBreacher/osintprocess</a>
+    Source is on Github at <a href="https://github.com/WebBreacher/osintprocess">https://github.com/WebBreacher/osintprocess</a> if you'd like to help add content.
 </p>
 </body>
 </html>
