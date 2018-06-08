@@ -7,27 +7,19 @@
   <script type="text/javascript" src="files/vis.js"></script>
   <link href="files/vis-network.css" rel="stylesheet" type="text/css">
 
-  <style type="text/css">
-      #osintprocess {
-          width: 1100px;
-          height: 550px;
-      }
-  </style>
+    <style type="text/css">
+        #osintprocess {
+            width: 1100px;
+            height: 650px;
+        }
+    </style>
 </head>
 <body>
     <h1>OSINT Process Map</h1>
 <div id="osintprocess">
-  <div class="vis-network" style="position: relative; overflow: hidden; touch-action: pan-y; -moz-user-select: none; width: 100%; height: 100%;" tabindex="900">
-    <canvas style="position: relative; touch-action: none; -moz-user-select: none; width: 100%; height: 100%;" width="1100" height="550"></canvas>
+  <div class="vis-network" style="position: relative; overflow: visible; touch-action: pan-y; -moz-user-select: none; width: 100%; height: 100%;" tabindex="1100">
+    <canvas style="position: relative; touch-action: none; -moz-user-select: none; width: 100%; height: 100%;"></canvas>
     <div class="vis-manipulation" style="display: none;">
-    </div>
-    <div class="vis-edit-mode" style="display: block;">
-      <div class="vis-button vis-edit vis-edit-mode" style="touch-action: pan-y; -moz-user-select: none;">
-      </div>
-    </div>
-    <div class="vis-close" style="display: none; touch-action: pan-y;">
-    </div>
-    <div class="vis-tooltip" style="left: 0px; top: 0px; visibility: hidden;">
     </div>
   </div>
 </div>
@@ -95,8 +87,7 @@
     };
 
     var options = {
-		interaction:{hover:true},
-
+		    interaction:{hover:true},
         autoResize: true,
 
         edges:{
@@ -119,18 +110,17 @@
             size:10,
             x:5,
             y:5
-          },
-          shape: 'box'
+          }
         },
 
         layout: {
           randomSeed: false,
-          improvedLayout:false // not sure if this looks better enabled or off
+          improvedLayout:true // not sure if this looks better enabled or off
         },
 
         groups: {
-          dataelements: {color:{background:'blue'}, borderWidth:1, font: {color:'white'}},
-          searches:     {color:{background:'green'}, borderWidth:1, font: {color:'white'}}
+          dataelements: {color:{background:'blue'}, borderWidth:1, font: {color:'white'}, shape: 'box'},
+          searches:     {color:{background:'green'}, borderWidth:1, font: {color:'white'}, shape: 'elipse'}
         },
 
         interaction:{
