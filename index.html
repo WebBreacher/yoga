@@ -51,18 +51,18 @@
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 1, to: 2, arrows: 'to', title: 'Take local part off email'},
-        {from: 1, to: 5, arrows: 'to', title: 'Search for this'},
-        {from: 1, to: 6, arrows: 'to', title: 'Search for this'},
-        {from: 1, to: 9, arrows: 'to', title: 'Look for email on social media'},
-        {from: 2, to: 5, arrows: 'to', title: 'Search for this'},
-        {from: 3, to: 5, arrows: 'to', title: 'Search for this'},
-        {from: 3, to: 6, arrows: 'to', title: 'Search for this'},
-        {from: 4, to: 6, arrows: 'to', title: 'Search for this'},
-        {from: 7, to: 5, arrows: 'to', title: 'Search for this'},
-        {from: 7, to: 6, arrows: 'to', title: 'Search for this'},
-        {from: 8, to: 10, arrows: 'to', title: 'Search for this'},
-        {from: 9, to: 8, arrows: 'to', title: 'Record this'}
+        {from: 1, to: 2, arrows: 'to', label: 'Take local part off email'},
+        {from: 1, to: 5, arrows: 'to', label: 'Search for this'},
+        {from: 1, to: 6, arrows: 'to', label: 'Search for this'},
+        {from: 1, to: 9, arrows: 'to', label: 'Look for email on social media'},
+        {from: 2, to: 5, arrows: 'to', label: 'Search for this'},
+        {from: 3, to: 5, arrows: 'to', label: 'Search for this'},
+        {from: 3, to: 6, arrows: 'to', label: 'Search for this'},
+        {from: 4, to: 6, arrows: 'to', label: 'Search for this'},
+        {from: 7, to: 5, arrows: 'to', label: 'Search for this'},
+        {from: 7, to: 6, arrows: 'to', label: 'Search for this'},
+        {from: 8, to: 10, arrows: 'to', label: 'Search for this'},
+        {from: 9, to: 8, arrows: 'to', label: 'Record this'}
     ]);
 
     // create a network
@@ -113,38 +113,27 @@
           searches:     {color:{background:'green'}, borderWidth:1, font: {color:'white'}}
         },
 
+        interaction:{
+            dragNodes:true,
+            dragView: true,
+            hover: true,
+            hoverConnectedEdges: true,
+            navigationButtons: true,
+            selectable: true,
+            selectConnectedEdges: true,
+            tooltipDelay: 300,
+            zoomView: true
+          },
 
         physics:{
             enabled: true,
             barnesHut: {
               gravitationalConstant: -2000,
               centralGravity: 0.3,
-              springLength: 140,
+              springLength: 220,
               springConstant: 0.04,
               damping: 0.09,
-              avoidOverlap: 0
-            },
-            forceAtlas2Based: {
-              gravitationalConstant: -50,
-              centralGravity: 0.01,
-              springConstant: 0.08,
-              springLength: 100,
-              damping: 0.4,
-              avoidOverlap: 0
-            },
-            repulsion: {
-              centralGravity: 0.2,
-              springLength: 200,
-              springConstant: 0.05,
-              nodeDistance: 100,
-              damping: 0.09
-            },
-            hierarchicalRepulsion: {
-              centralGravity: 0.0,
-              springLength: 100,
-              springConstant: 0.01,
-              nodeDistance: 120,
-              damping: 0.09
+              avoidOverlap: .5
             },
             maxVelocity: 50,
             minVelocity: 0.1,
@@ -166,7 +155,7 @@
 </script>
 
 <p>
-    Created by Micah <a href="https://twitter.com/webbreacher">"WebBreacher"</a> Hoffman. <br><br>
+    Created by Micah "<a href="https://twitter.com/webbreacher">WebBreacher</a>" Hoffman. <br><br>
     Source is on Github at <a href="https://github.com/WebBreacher/osintprocess">https://github.com/WebBreacher/osintprocess</a>
 </p>
 </body>
