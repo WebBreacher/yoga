@@ -52,36 +52,49 @@
         {id: 106, label: 'IP Information Search', title: 'Ex: viewdns.info', group: 'searches'},
         {id: 107, label: 'Real Estate Sites', title: 'Ex: trulia.com', group: 'searches'},
         {id: 108, label: 'Email Verification', title: 'Ex: hunter.io', group: 'searches'},
-        {id: 109, label: 'Breach Sites', title: 'Ex: haveibeenpwnd.com', group: 'searches'}
+        {id: 109, label: 'Breach Sites', title: 'Ex: haveibeenpwnd.com', group: 'searches'},
+        {id: 110, label: 'Guess at email address', title: 'XXXX@gmail.com', group: 'searches'},
+        {id: 111, label: 'User Enumeration', title: 'Ex: WhatsMyName Project', group: 'searches'},
+        {id: 112, label: 'Examine for Services', title: 'Ex: Visit website', group: 'searches'},
+        {id: 113, label: 'Search Engine site:XXXX', title: 'Ex: site:sec487.info', group: 'searches'},
+        {id: 114, label: 'Google Analytics', title: 'Ex: Look for UA- in Page Source', group: 'searches'},
+        {id: 115, label: 'Examine Files for Metadata', title: 'Ex: Use FOCA on domain', group: 'searches'}
     ]);
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 1, to: 100, arrows: 'to', label: 'Search'},
-        {from: 1, to: 101, arrows: 'to', label: 'Search'},
-        {from: 1, to: 104, arrows: 'to', label: 'Search'},
-        {from: 1, to: 108, arrows: 'to', label: 'Search'},
-        {from: 1, to: 109, arrows: 'to', label: 'Search'},
+        {from: 1, to: 100, arrows: 'to'},
+        {from: 1, to: 101, arrows: 'to'},
+        {from: 1, to: 104, arrows: 'to'},
+        {from: 1, to: 108, arrows: 'to'},
+        {from: 1, to: 109, arrows: 'to'},
         {from: 1, to: 7, arrows: 'to', label: 'Look for email on social media'},
-        {from: 2, to: 100, arrows: 'to', label: 'Search'},
-        {from: 2, to: 101, arrows: 'to', label: 'Search'},
-        {from: 3, to: 100, arrows: 'to', label: 'Search'},
-        {from: 3, to: 101, arrows: 'to', label: 'Search'},
-        {from: 4, to: 101, arrows: 'to', label: 'Search'},
-        {from: 4, to: 107, arrows: 'to', label: 'Search'},
-        {from: 5, to: 100, arrows: 'to', label: 'Search'},
-        {from: 5, to: 101, arrows: 'to', label: 'Search'},
-        {from: 5, to: 104, arrows: 'to', label: 'Search'},
-        {from: 6, to: 102, arrows: 'to', label: 'Search'},
-        {from: 6, to: 7, arrows: 'to', label: 'Search'},
-        {from: 7, to: 100, arrows: 'to', label: 'Search'},
-        {from: 8, to: 101, arrows: 'to', label: 'Search'},
-        {from: 8, to: 103, arrows: 'to', label: 'Search'},
-        {from: 8, to: 104, arrows: 'to', label: 'Search'},
-        {from: 9, to: 101, arrows: 'to', label: 'Search'},
-        {from: 9, to: 103, arrows: 'to', label: 'Search'},
-        {from: 9, to: 105, arrows: 'to', label: 'Search'},
-        {from: 9, to: 106, arrows: 'to', label: 'Search'}
+        {from: 2, to: 100, arrows: 'to'},
+        {from: 2, to: 101, arrows: 'to'},
+        {from: 2, to: 111, arrows: 'to'},
+        {from: 3, to: 100, arrows: 'to'},
+        {from: 3, to: 101, arrows: 'to'},
+        {from: 4, to: 101, arrows: 'to'},
+        {from: 4, to: 107, arrows: 'to'},
+        {from: 5, to: 100, arrows: 'to'},
+        {from: 5, to: 101, arrows: 'to'},
+        {from: 5, to: 104, arrows: 'to'},
+        {from: 6, to: 102, arrows: 'to'},
+        {from: 6, to: 7, arrows: 'to'},
+        {from: 7, to: 100, arrows: 'to'},
+        {from: 8, to: 101, arrows: 'to'},
+        {from: 8, to: 103, arrows: 'to,from'},
+        {from: 8, to: 104, arrows: 'to'},
+        {from: 8, to: 112, arrows: 'to'},
+        {from: 8, to: 113, arrows: 'to'},
+        {from: 9, to: 101, arrows: 'to'},
+        {from: 9, to: 103, arrows: 'to,from'},
+        {from: 9, to: 105, arrows: 'to'},
+        {from: 9, to: 106, arrows: 'to'},
+        {from: 9, to: 112, arrows: 'to'},
+        {from: 9, to: 113, arrows: 'to'},
+        {from: 112, to: 114, arrows: 'to'},
+        {from: 112, to: 115, arrows: 'to'}
     ]);
 
     // create a network
@@ -108,7 +121,7 @@
 
         nodes:{
           shadow:{
-            enabled: false,
+            enabled: true,
             color: 'rgba(0,0,0,0.5)',
             size:10,
             x:5,
@@ -118,7 +131,7 @@
 
         layout: {
           randomSeed: false,
-          improvedLayout:true // not sure if this looks better enabled or off
+          improvedLayout:true
         },
 
         groups: {
