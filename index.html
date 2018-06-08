@@ -98,8 +98,6 @@
 		interaction:{hover:true},
 
         autoResize: true,
-        height: '100%',
-        width: '100%',
 
         edges:{
           shadow: true,
@@ -127,7 +125,7 @@
 
         layout: {
           randomSeed: false,
-          improvedLayout:true
+          improvedLayout:false // not sure if this looks better enabled or off
         },
 
         groups: {
@@ -143,7 +141,7 @@
             navigationButtons: true,
             selectable: true,
             selectConnectedEdges: true,
-            tooltipDelay: 300,
+            tooltipDelay: 200,
             zoomView: true
           },
 
@@ -155,7 +153,7 @@
               springLength: 220,
               springConstant: 0.04,
               damping: 0.09,
-              avoidOverlap: .5
+              avoidOverlap: .59 // this controls the spinning
             },
             maxVelocity: 50,
             minVelocity: 0.1,
@@ -163,7 +161,7 @@
             stabilization: {
               enabled: true,
               iterations: 1000,
-              updateInterval: 100,
+              updateInterval: 200,
               onlyDynamicEdges: false,
               fit: true
             },
