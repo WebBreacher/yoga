@@ -64,28 +64,29 @@
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 1, to: 100, arrows: 'to'},
-        {from: 1, to: 101, arrows: 'to'},
-        {from: 1, to: 104, arrows: 'to'},
-        {from: 1, to: 108, arrows: 'to'},
-        {from: 1, to: 109, arrows: 'to'},
         {from: 1, to: 7, arrows: 'to', label: 'Look for Email on Social Media'},
-        {from: 2, to: 100, arrows: 'to'},
-        {from: 2, to: 101, arrows: 'to'},
-        {from: 2, to: 110, arrows: 'to'},
-        {from: 2, to: 111, arrows: 'to'},
-        {from: 3, to: 7, arrows: 'to', label: 'Look for Phone on Social Media'},
-        {from: 3, to: 100, arrows: 'to'},
-        {from: 3, to: 101, arrows: 'to'},
-        {from: 4, to: 100, arrows: 'to'},
-        {from: 4, to: 101, arrows: 'to'},
-        {from: 4, to: 107, arrows: 'to'},
-        {from: 5, to: 7, arrows: 'to', label: 'Look for Name on Social Media'},
-        {from: 5, to: 100, arrows: 'to'},
-        {from: 5, to: 101, arrows: 'to'},
-        {from: 5, to: 104, arrows: 'to'},
+        {from: 1, to: 100, arrows: 'to'}, // email to ppl search engine
+        {from: 1, to: 101, arrows: 'to'}, // email to regular search engine
+        {from: 1, to: 104, arrows: 'to'}, // email to Whois
+        {from: 1, to: 108, arrows: 'to'}, // email to email Verification
+        {from: 1, to: 109, arrows: 'to'}, // email to breach Sites
+        {from: 1, to: 116, arrows: 'to'}, // email to Examine HTTPS Certs
+        {from: 2, to: 100, arrows: 'to'}, // username to ppl search engine
+        {from: 2, to: 101, arrows: 'to'}, // username to regular search engine
+        {from: 2, to: 110, arrows: 'to'}, // username to guess email
+        {from: 2, to: 111, arrows: 'to'}, // username to user enumeration
+        {from: 3, to: 7, arrows: 'to', label: 'Look for Phone on Social Media'}, // phone to social media
+        {from: 3, to: 100, arrows: 'to'}, // phone to ppl search engine
+        {from: 3, to: 101, arrows: 'to'}, // phone to regular search engine
+        {from: 4, to: 100, arrows: 'to'}, // address to ppl search engine
+        {from: 4, to: 101, arrows: 'to'}, // address to regular search engine
+        {from: 4, to: 107, arrows: 'to'}, // address to real estate
+        {from: 5, to: 7, arrows: 'to', label: 'Look for Name on Social Media'}, // names to social media
+        {from: 5, to: 100, arrows: 'to'}, // names to ppl search engine
+        {from: 5, to: 101, arrows: 'to'}, // names to regular search engine
+        {from: 5, to: 104, arrows: 'to'}, // names to Whois
         {from: 6, to: 102, arrows: 'to'},
-        {from: 6, to: 7, arrows: 'to'},
+        {from: 6, to: 7, arrows: 'to,from'},
         {from: 7, to: 100, arrows: 'to'},
         {from: 8, to: 101, arrows: 'to'},
         {from: 8, to: 103, arrows: 'to,from'},
@@ -119,9 +120,9 @@
           smooth: true,
           chosen: true,
           color:{
-                  color:'blue',
-                  highlight:'#ff0000',
-                  hover: '#ff0000'
+                  color:'black',
+                  highlight:'red',
+                  hover: 'orange'
                 }
         },
 
