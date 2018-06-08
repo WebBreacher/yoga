@@ -9,8 +9,9 @@
 
     <style type="text/css">
         #osintprocess {
-            width: 1100px;
+            width: 90%;
             height: 650px;
+            border: 1px solid lightgray;
         }
     </style>
 </head>
@@ -49,34 +50,38 @@
         {id: 104, label: 'Whois Lookups', title: 'Ex: centralops.net', group: 'searches'},
         {id: 105, label: 'IP Geolocation Search', title: '', group: 'searches'},
         {id: 106, label: 'IP Information Search', title: 'Ex: viewdns.info', group: 'searches'},
-        {id: 107, label: 'Real Estate Sites', title: 'Ex: trulia.com', group: 'searches'}
+        {id: 107, label: 'Real Estate Sites', title: 'Ex: trulia.com', group: 'searches'},
+        {id: 108, label: 'Email Verification', title: 'Ex: hunter.io', group: 'searches'},
+        {id: 109, label: 'Breach Sites', title: 'Ex: haveibeenpwnd.com', group: 'searches'}
     ]);
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 1, to: 100, arrows: 'to', label: 'Search for this'},
-        {from: 1, to: 101, arrows: 'to', label: 'Search for this'},
-        {from: 1, to: 104, arrows: 'to', label: 'Search for this'},
+        {from: 1, to: 100, arrows: 'to', label: 'Search'},
+        {from: 1, to: 101, arrows: 'to', label: 'Search'},
+        {from: 1, to: 104, arrows: 'to', label: 'Search'},
+        {from: 1, to: 108, arrows: 'to', label: 'Search'},
+        {from: 1, to: 109, arrows: 'to', label: 'Search'},
         {from: 1, to: 7, arrows: 'to', label: 'Look for email on social media'},
-        {from: 2, to: 100, arrows: 'to', label: 'Search for this'},
-        {from: 2, to: 101, arrows: 'to', label: 'Search for this'},
-        {from: 3, to: 100, arrows: 'to', label: 'Search for this'},
-        {from: 3, to: 101, arrows: 'to', label: 'Search for this'},
-        {from: 4, to: 101, arrows: 'to', label: 'Search for this'},
-        {from: 4, to: 107, arrows: 'to', label: 'Search for this'},
-        {from: 5, to: 100, arrows: 'to', label: 'Search for this'},
-        {from: 5, to: 101, arrows: 'to', label: 'Search for this'},
-        {from: 5, to: 104, arrows: 'to', label: 'Search for this'},
-        {from: 6, to: 102, arrows: 'to', label: 'Search for this'},
-        {from: 6, to: 7, arrows: 'to', label: 'Search for this'},
-        {from: 7, to: 100, arrows: 'to', label: 'Search for this'},
-        {from: 8, to: 101, arrows: 'to', label: 'Search for this'},
-        {from: 8, to: 103, arrows: 'to', label: 'Search for this'},
-        {from: 8, to: 104, arrows: 'to', label: 'Search for this'},
-        {from: 9, to: 101, arrows: 'to', label: 'Search for this'},
-        {from: 9, to: 103, arrows: 'to', label: 'Search for this'},
-        {from: 9, to: 105, arrows: 'to', label: 'Search for this'},
-        {from: 9, to: 106, arrows: 'to', label: 'Search for this'}
+        {from: 2, to: 100, arrows: 'to', label: 'Search'},
+        {from: 2, to: 101, arrows: 'to', label: 'Search'},
+        {from: 3, to: 100, arrows: 'to', label: 'Search'},
+        {from: 3, to: 101, arrows: 'to', label: 'Search'},
+        {from: 4, to: 101, arrows: 'to', label: 'Search'},
+        {from: 4, to: 107, arrows: 'to', label: 'Search'},
+        {from: 5, to: 100, arrows: 'to', label: 'Search'},
+        {from: 5, to: 101, arrows: 'to', label: 'Search'},
+        {from: 5, to: 104, arrows: 'to', label: 'Search'},
+        {from: 6, to: 102, arrows: 'to', label: 'Search'},
+        {from: 6, to: 7, arrows: 'to', label: 'Search'},
+        {from: 7, to: 100, arrows: 'to', label: 'Search'},
+        {from: 8, to: 101, arrows: 'to', label: 'Search'},
+        {from: 8, to: 103, arrows: 'to', label: 'Search'},
+        {from: 8, to: 104, arrows: 'to', label: 'Search'},
+        {from: 9, to: 101, arrows: 'to', label: 'Search'},
+        {from: 9, to: 103, arrows: 'to', label: 'Search'},
+        {from: 9, to: 105, arrows: 'to', label: 'Search'},
+        {from: 9, to: 106, arrows: 'to', label: 'Search'}
     ]);
 
     // create a network
@@ -94,13 +99,11 @@
           shadow: true,
           smooth: true,
           chosen: true,
-          color: {
-            color:'#848484',
-            highlight:'#000000',
-            hover: '#0000ff',
-            inherit: 'from',
-            opacity:1.0
-          }
+          color:{
+                  color:'blue',
+                  highlight:'#ff0000',
+                  hover: '#ff0000'
+                }
         },
 
         nodes:{
@@ -119,8 +122,26 @@
         },
 
         groups: {
-          dataelements: {color:{background:'blue'}, borderWidth:1, font: {color:'white'}, shape: 'box'},
-          searches:     {color:{background:'green'}, borderWidth:1, font: {color:'white'}, shape: 'elipse'}
+          dataelements: {
+                          color:{
+                                  background:'blue',
+                                  highlight:'#ff0000',
+                                  hover: '#ff0000'
+                                },
+                          borderWidth:1,
+                          font: {color:'white'},
+                          shape: 'box'
+                        },
+          searches:     {
+                          color:{
+                                  background:'green',
+                                  highlight:'#ff0000',
+                                  hover: '#ff0000'
+                                },
+                          borderWidth:1,
+                          font: {color:'white'},
+                          shape: 'elipse'
+                        }
         },
 
         interaction:{
@@ -138,15 +159,15 @@
         physics:{
             enabled: true,
             barnesHut: {
-              gravitationalConstant: -2000,
+              gravitationalConstant: -900,
               centralGravity: 0.3,
               springLength: 220,
-              springConstant: 0.04,
-              damping: 0.09,
+              springConstant: .1,
+              damping: 0.5,
               avoidOverlap: .59 // this controls the spinning
             },
             maxVelocity: 50,
-            minVelocity: 0.1,
+            minVelocity: 0.2,
             solver: 'barnesHut',
             stabilization: {
               enabled: true,
@@ -155,7 +176,7 @@
               onlyDynamicEdges: false,
               fit: true
             },
-            timestep: 0.5,
+            timestep: 0.1, // this is good to change
             adaptiveTimestep: true
         }
     };
