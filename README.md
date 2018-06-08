@@ -1,2 +1,1 @@
-# osintprocess
-OSINT Process Graph/Diagram
+The OSINT Process project is for helping people understand different courses of action to take based upon the data they have. Have a username? Click on it and review the attached/connected nodes for possible actions.
