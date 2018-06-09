@@ -11,13 +11,15 @@
 </head>
 
 <body>
+  <a href="https://github.com/WebBreacher/yoga"><img style="position: absolute; top: 0; right: 0; border: 0;"
+     src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+     
   <h1>Your OSINT Graphical Analyzer (YOGA)</h1>
   <div id="osintprocess"></div>
 
   <script type="text/javascript">
-    // create an array with nodes
     var nodes = new vis.DataSet([
-        // Facts/data = group 1
+        // group 1 = blue - facts and data
         {id: 'email', label: 'Email Address', title: 'Ex: buttercup@example.com', group: 1},
         {id: 'usrName', label: 'Username', title: 'Ex: DreadPirateRoberts', group: 1},
         {id: 'phoneNumber', label: 'Phone Number', title: 'Ex: +15558675309', group: 1},
@@ -28,10 +30,7 @@
         {id: 'domain', label: 'Domain Name', title: 'Ex: www.sec487.info', group: 1},
         {id: 'ip', label: 'IP address', title: 'Ex: 192.168.1.2', group: 1},
 
-        // Actions
         // group 2 = yellow - searches
-        // group 3 = red    - other actions
-        // group 4 = green  - unused
         {id: 'pplSearchEngine', label: 'People Search Engine', title: 'Ex: pipl.com', group: 2},
         {id: 'searchEngine', label: 'Search Engine', title: 'Ex. duckduckgo.com', group: 2},
         {id: 'imgSearchEngine', label: 'Image Search Engine', title: 'Ex: images.google.com', group: 2},
@@ -40,53 +39,58 @@
         {id: 'ipGeoSearch', label: 'IP Geolocation Search', title: '', group: 2},
         {id: 'ipInfoSearch', label: 'IP Information Search', title: 'Ex: viewdns.info', group: 2},
         {id: 'realEstateSearch', label: 'Real Estate Search', title: 'Ex: trulia.com', group: 2},
-        {id: 'emailVerification', label: 'Email Verification', title: 'Ex: hunter.io', group: 3},
         {id: 'breachSiteSearch', label: 'Breach Site Search', title: 'Ex: haveibeenpwnd.com', group: 2},
+        {id: 'httpsCerts', label: 'Examine HTTPS Certs', title: 'Ex: censys.io', group: 2},
+
+        // group 3 = red - other actions
+        {id: 'emailVerification', label: 'Email Verification', title: 'Ex: hunter.io', group: 3},
         {id: 'guessEmail', label: 'Guess at email address', title: 'Ex: XXXX@gmail.com', group: 3},
         {id: 'userEnum', label: 'User Enumeration', title: 'Ex: WhatsMyName Project', group: 3},
         {id: 'examineForServices', label: 'Examine for Services', title: 'Ex: Visit website', group: 3},
         {id: 'googleAnalytics', label: 'Google Analytics', title: 'Ex: Look for UA- in Page Source', group: 3},
         {id: 'fileMetadata', label: 'Examine Files for Metadata', title: 'Ex: Use FOCA on domain', group: 3},
-        {id: 'httpsCerts', label: 'Examine HTTPS Certs', title: 'Ex: censys.io', group: 2},
+
+        // group 4 = green - unused
+
     ]);
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 'email', to: 'socialMediaAcct', arrows: 'to', label: 'Look for email on social media'},
+        {from: 'email', to: 'socialMediaAcct', arrows: 'to', title: 'Look for email on social media'},
         {from: 'email', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'email', to: 'searchEngine', arrows: 'to'},
-        {from: 'email', to: 'whoisSearch', arrows: 'to'},
-        {from: 'email', to: 'emailVerification', arrows: 'to'},
-        {from: 'email', to: 'breachSiteSearch', arrows: 'to'},
-        {from: 'email', to: 'httpsCerts', arrows: 'to'},
+        {from: 'email', to: 'whoisSearch', arrows: 'to', title: 'Perform a reverse Whois search'},
+        {from: 'email', to: 'emailVerification', arrows: 'to', title: 'Is the email real/live?'},
+        {from: 'email', to: 'breachSiteSearch', arrows: 'to', title: 'Was email found in a breach?'},
+        {from: 'email', to: 'httpsCerts', arrows: 'to', title: 'Is email in an HTTPS certifcate?'},
         {from: 'usrName', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'usrName', to: 'searchEngine', arrows: 'to'},
         {from: 'usrName', to: 'guessEmail', arrows: 'to'},
         {from: 'usrName', to: 'userEnum', arrows: 'to'},
-        {from: 'phoneNumber', to: 'socialMediaAcct', arrows: 'to', label: 'Look for phone on social media'},
+        {from: 'phoneNumber', to: 'socialMediaAcct', arrows: 'to', title: 'Look for phone on social media'},
         {from: 'phoneNumber', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'phoneNumber', to: 'searchEngine', arrows: 'to'},
         {from: 'address', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'address', to: 'searchEngine', arrows: 'to'},
         {from: 'address', to: 'realEstateSearch', arrows: 'to'},
-        {from: 'firstLastName', to: 'socialMediaAcct', arrows: 'to', label: 'Look for name on social media'},
+        {from: 'firstLastName', to: 'socialMediaAcct', arrows: 'to', title: 'Look for name on social media'},
         {from: 'firstLastName', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'firstLastName', to: 'searchEngine', arrows: 'to'},
-        {from: 'firstLastName', to: 'whoisSearch', arrows: 'to'},
-        {from: 'profilePic', to: 'imgSearchEngine', arrows: 'to'},
-        {from: 'profilePic', to: 'socialMediaAcct', arrows: 'to,from'},
+        {from: 'firstLastName', to: 'whoisSearch', arrows: 'to', title: 'Is the person a POC for a domain?'},
+        {from: 'profilePic', to: 'imgSearchEngine', arrows: 'to', title: 'Where else is the image used?'},
+        {from: 'profilePic', to: 'socialMediaAcct', arrows: 'to,from', title: 'Is the pic used on other social media?'},
         {from: 'socialMediaAcct', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'domain', to: 'searchEngine', arrows: 'to'},
         {from: 'domain', to: 'dnsSearch', arrows: 'to,from'},
         {from: 'domain', to: 'whoisSearch', arrows: 'to'},
-        {from: 'domain', to: 'examineForServices', arrows: 'to', label: 'Scan system for open ports'},
+        {from: 'domain', to: 'examineForServices', arrows: 'to', title: 'Scan system for open ports'},
         {from: 'ip', to: 'searchEngine', arrows: 'to'},
         {from: 'ip', to: 'dnsSearch', arrows: 'to,from'},
         {from: 'ip', to: 'ipGeoSearch', arrows: 'to'},
         {from: 'ip', to: 'ipInfoSearch', arrows: 'to'},
-        {from: 'ip', to: 'examineForServices', arrows: 'to', label: 'Scan system for open ports'},
-        {from: 'examineForServices', to: 'googleAnalytics', arrows: 'to'},
-        {from: 'examineForServices', to: 'fileMetadata', arrows: 'to'},
+        {from: 'ip', to: 'examineForServices', arrows: 'to', title: 'Scan system for open ports'},
+        {from: 'examineForServices', to: 'googleAnalytics', arrows: 'to', title: 'Harvest codes and search for other sites using them'},
+        {from: 'examineForServices', to: 'fileMetadata', arrows: 'to', title: 'Is there metadata in the file?'},
         {from: 'examineForServices', to: 'httpsCerts', arrows: 'to'}
     ]);
 
@@ -107,14 +111,10 @@
 
         nodes:{
           shape: 'dot', size: 16,
-          shadow:{
-            enabled: true,
-            color: 'rgba(0,0,0,0.5)',
-            size:10, x:5, y:5
-          }
+          shadow:{ enabled: true, color: 'rgba(0,0,0,0.5)', size:10, x:5, y:5 }
         },
 
-        layout: { randomSeed: undefined, improvedLayout: true },
+        layout: { randomSeed: 7, improvedLayout: true },
 
         interaction:{ dragNodes: true, dragView: true, hover: true, hoverConnectedEdges: true,
             navigationButtons: true, selectable: true, selectConnectedEdges: true, tooltipDelay: 200,
@@ -123,13 +123,13 @@
 
         physics:{
             enabled: true,
-            barnesHut: { gravitationalConstant: -900, centralGravity: 0.03, springLength: 150,
+            barnesHut: { gravitationalConstant: -900, centralGravity: 0.03, springLength: 180,
               springConstant: .01, damping: 0.5, avoidOverlap: .9
             },
             maxVelocity: 50,
             minVelocity: 5,
             solver: 'barnesHut',
-            stabilization: { enabled: true, iterations: 1000, updateInterval: 200, fit: true},
+            stabilization: { enabled: true, iterations: 1000, updateInterval: 200, fit: false},
             timestep: .25,
             adaptiveTimestep: true
         }
@@ -139,8 +139,14 @@
 
   </script>
 
-  Created by Micah "<a href="https://twitter.com/webbreacher">WebBreacher</a>" Hoffman. <br><br>
-  Source is on Github at <a href="https://github.com/WebBreacher/yoga">https://github.com/WebBreacher/yoga</a> if you'd like to help add content.
+  Created by Micah "<a href="https://twitter.com/webbreacher">WebBreacher</a>" Hoffman. Source is on Github at <a href="https://github.com/WebBreacher/yoga">https://github.com/WebBreacher/yoga</a> if you'd like to help add content.
+
+  <h1>Usage</h1>
+  <ul>
+    <li>Mouse over edges (lines connecting the nodes) for descriptions of the actions</li>
+    <li>Click and drag nodes (dots) around the page to view all content</li>
+  </ul>
+
 
 </body>
 </html>
