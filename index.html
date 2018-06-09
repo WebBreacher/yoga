@@ -5,7 +5,7 @@
   <title>OSINT Process</title>
 
   <script type="text/javascript" src="files/vis.js"></script>
-  <link href="files/vis-network.css" rel="stylesheet" type="text/css">
+  <link href="files/vis-network.min.css" rel="stylesheet" type="text/css">
 
     <style type="text/css">
         #osintprocess {
@@ -136,7 +136,7 @@
         },
 
         layout: {
-          randomSeed: false,
+          randomSeed: 1,
           improvedLayout:true
         },
 
@@ -219,12 +219,7 @@
     network.on("selectEdge", function (params) {
         console.log('selectEdge Event:', params);
     });
-    network.on("hoverNode", function (params) {
-        console.log('hoverNode Event:', params);
-    });
-    network.on("hoverEdge", function (params) {
-        console.log('hoverEdge Event:', params);
-    });
+
 
 </script>
 
