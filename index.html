@@ -9,15 +9,11 @@
   <link rel=”shortcut icon” href=”/favicon.ico” type=”image/x-icon” />
 
     <style type="text/css">
-        #osintprocess {
-            width: 85%;
-            height: 500px;
-            border: 1px solid lightgray;
-        }
+        #osintprocess { width: 85%; height: 500px; border: 1px solid lightgray; align-self: right;}
     </style>
 </head>
 <body>
-    <h1>Your OSINT Graphical Analyzer (YOGA)</h1>
+  <h1>Your OSINT Graphical Analyzer (YOGA)</h1>
 <div id="osintprocess">
   <div class="vis-network" style="position: relative; overflow: visible; touch-action: pan-y; -moz-user-select: none; width: 100%; height: 100%;" tabindex="'guessEmail'0">
     <canvas style="position: relative; touch-action: none; -moz-user-select: none; width: 100%; height: 100%;"></canvas>
@@ -31,35 +27,37 @@
 <script type="text/javascript">
     // create an array with nodes
     var nodes = new vis.DataSet([
-        // Facts/data
-        {id: 'email', label: 'Email Address', title: 'Ex: buttercup@example.com', group: 'dataelements'},
-        {id: 'usrName', label: 'Username', title: 'Ex: DreadPirateRoberts', group: 'dataelements'},
-        {id: 'phoneNumber', label: 'Phone Number', title: 'Ex: +15558675309', group: 'dataelements'},
-        {id: 'address', label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA', group: 'dataelements'},
-        {id: 'firstLastName', label: 'Person: First Last Name', title: 'Ex: Johan Smith', group: 'dataelements'},
-        {id: 'profilePic', label: 'Avatar/Profile Pic', title: 'An image from a social media account', group: 'dataelements'},
-        {id: 'socialMediaAcct', label: 'Social Media Account', title: 'Ex: Account on facebook.com', group: 'dataelements'},
-        {id: 'domain', label: 'Domain Name', title: 'Ex: www.sec487.info', group: 'dataelements'},
-        {id: 'ip', label: 'IP address', title: 'Ex: 192.168.1.2', group: 'dataelements'},
-
+        // Facts/data = group 1
+        {id: 'email', label: 'Email Address', title: 'Ex: buttercup@example.com', group: 1},
+        {id: 'usrName', label: 'Username', title: 'Ex: DreadPirateRoberts', group: 1},
+        {id: 'phoneNumber', label: 'Phone Number', title: 'Ex: +15558675309', group: 1},
+        {id: 'address', label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA', group: 1},
+        {id: 'firstLastName', label: 'Person: First Last Name', title: 'Ex: Johan Smith', group: 1},
+        {id: 'profilePic', label: 'Avatar/Profile Pic', title: 'An image from a social media account', group: 1},
+        {id: 'socialMediaAcct', label: 'Social Media Account', title: 'Ex: Account on facebook.com', group: 1},
+        {id: 'domain', label: 'Domain Name', title: 'Ex: www.sec487.info', group: 1},
+        {id: 'ip', label: 'IP address', title: 'Ex: 192.168.1.2', group: 1},
 
         // Actions
-        {id: 'pplSearchEngine', label: 'People Search Engine', title: 'Ex: pipl.com', group: 'searches'},
-        {id: 'searchEngine', label: 'Search Engine', title: 'Ex. duckduckgo.com', group: 'searches'},
-        {id: 'imgSearchEngine', label: 'Image Search Engine', title: 'Ex: images.google.com', group: 'searches'},
-        {id: 'dnsSearch', label: 'DNS Search', title: 'Ex: dig, viewdns.info', group: 'searches'},
-        {id: 'whoisSearch', label: 'Whois Search', title: 'Ex: centralops.net', group: 'searches'},
-        {id: 'ipGeoSearch', label: 'IP Geolocation Search', title: '', group: 'searches'},
-        {id: 'ipInfoSearch', label: 'IP Information Search', title: 'Ex: viewdns.info', group: 'searches'},
-        {id: 'realEstateSearch', label: 'Real Estate Search', title: 'Ex: trulia.com', group: 'searches'},
-        {id: 'emailVerification', label: 'Email Verification', title: 'Ex: hunter.io', group: 'searches'},
-        {id: 'breachSiteSearch', label: 'Breach Site Search', title: 'Ex: haveibeenpwnd.com', group: 'searches'},
-        {id: 'guessEmail', label: 'Guess at email address', title: 'Ex: XXXX@gmail.com', group: 'searches'},
-        {id: 'userEnum', label: 'User Enumeration', title: 'Ex: WhatsMyName Project', group: 'searches'},
-        {id: 'examineForServices', label: 'Examine for Services', title: 'Ex: Visit website', group: 'searches'},
-        {id: 'googleAnalytics', label: 'Google Analytics', title: 'Ex: Look for UA- in Page Source', group: 'searches'},
-        {id: 'fileMetadata', label: 'Examine Files for Metadata', title: 'Ex: Use FOCA on domain', group: 'searches'},
-        {id: 'httpsCerts', label: 'Examine HTTPS Certs', title: 'Ex: censys.io', group: 'searches'}
+        // group 2 = yellow - searches
+        // group 3 = red    - other actions
+        // group 4 = green  - unused
+        {id: 'pplSearchEngine', label: 'People Search Engine', title: 'Ex: pipl.com', group: 2},
+        {id: 'searchEngine', label: 'Search Engine', title: 'Ex. duckduckgo.com', group: 2},
+        {id: 'imgSearchEngine', label: 'Image Search Engine', title: 'Ex: images.google.com', group: 2},
+        {id: 'dnsSearch', label: 'DNS Search', title: 'Ex: dig, viewdns.info', group: 2},
+        {id: 'whoisSearch', label: 'Whois Search', title: 'Ex: centralops.net', group: 2},
+        {id: 'ipGeoSearch', label: 'IP Geolocation Search', title: '', group: 2},
+        {id: 'ipInfoSearch', label: 'IP Information Search', title: 'Ex: viewdns.info', group: 2},
+        {id: 'realEstateSearch', label: 'Real Estate Search', title: 'Ex: trulia.com', group: 2},
+        {id: 'emailVerification', label: 'Email Verification', title: 'Ex: hunter.io', group: 3},
+        {id: 'breachSiteSearch', label: 'Breach Site Search', title: 'Ex: haveibeenpwnd.com', group: 2},
+        {id: 'guessEmail', label: 'Guess at email address', title: 'Ex: XXXX@gmail.com', group: 3},
+        {id: 'userEnum', label: 'User Enumeration', title: 'Ex: WhatsMyName Project', group: 3},
+        {id: 'examineForServices', label: 'Examine for Services', title: 'Ex: Visit website', group: 3},
+        {id: 'googleAnalytics', label: 'Google Analytics', title: 'Ex: Look for UA- in Page Source', group: 3},
+        {id: 'fileMetadata', label: 'Examine Files for Metadata', title: 'Ex: Use FOCA on domain', group: 3},
+        {id: 'httpsCerts', label: 'Examine HTTPS Certs', title: 'Ex: censys.io', group: 2},
     ]);
 
     // create an array with edges
@@ -104,10 +102,7 @@
 
     // create a network
     var container = document.getElementById('osintprocess');
-    var data = {
-        nodes: nodes,
-        edges: edges
-    };
+    var data = { nodes: nodes, edges: edges };
 
     var options = {
 		    interaction:{hover:true},
@@ -125,6 +120,8 @@
         },
 
         nodes:{
+          shape: 'dot',
+          size: 16,
           shadow:{
             enabled: true,
             color: 'rgba(0,0,0,0.5)',
@@ -135,70 +132,30 @@
         },
 
         layout: {
-          randomSeed: 1,
-          improvedLayout:true
+          randomSeed: undefined,
+          improvedLayout: true
         },
 
-        groups: {
-          dataelements: {
-            color:{
-              background:'blue',
-              highlight:'#ff0000',
-              hover: '#ff0000'
-            },
-            font: {color:'white'},
-            shape: 'box'
-          },
-          searches: {
-            color:{
-                    background:'green',
-                    highlight:'#ff0000',
-                    hover: '#ff0000'
-                  },
-            font: {color:'white'},
-            shape: 'elipse'
-          }
-        },
-
-        interaction:{
-            dragNodes:true,
-            dragView: true,
-            hover: true,
-            hoverConnectedEdges: true,
-            navigationButtons: true,
-            selectable: true,
-            selectConnectedEdges: true,
-            tooltipDelay: 200,
+        interaction:{ dragNodes: true, dragView: true, hover: true, hoverConnectedEdges: true,
+            navigationButtons: true, selectable: true, selectConnectedEdges: true, tooltipDelay: 200,
             zoomView: true
           },
 
         physics:{
             enabled: true,
-            barnesHut: {
-              gravitationalConstant: -900,
-              centralGravity: 0.3,
-              springLength: 220,
-              springConstant: .1,
-              damping: 0.5,
-              avoidOverlap: .9
+            barnesHut: { gravitationalConstant: -900, centralGravity: 0.03, springLength: 150,
+              springConstant: .01, damping: 0.5, avoidOverlap: .9
             },
             maxVelocity: 50,
             minVelocity: 5,
             solver: 'barnesHut',
-            stabilization: {
-              enabled: true,
-              iterations: 1000,
-              updateInterval: 200,
-              onlyDynamicEdges: false,
-              fit: true
-            },
+            stabilization: { enabled: true, iterations: 1000, updateInterval: 200, fit: true},
             timestep: .25,
             adaptiveTimestep: true
         }
     };
 
     var network = new vis.Network(container, data, options);
-
 
 </script>
 
