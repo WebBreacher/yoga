@@ -21,7 +21,7 @@
         {id: 'usrName', label: 'Username', title: 'Ex: DreadPirateRoberts', group: 1},
         {id: 'phoneNumber', label: 'Phone Number', title: 'Ex: +15558675309', group: 1},
         {id: 'address', label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA', group: 1},
-        {id: 'firstLastName', label: 'Person: First Last Name', title: 'Ex: Johan Smith', group: 1},
+        {id: 'firstLastName', label: 'First Last Name', title: 'Ex: Johan Smith', group: 1},
         {id: 'profilePic', label: 'Avatar/Profile Pic', title: 'An image from a social media account', group: 1},
         {id: 'socialMediaAcct', label: 'Social Media Account', title: 'Ex: Account on facebook.com', group: 1},
         {id: 'domain', label: 'Domain Name', title: 'Ex: www.sec487.info', group: 1},
@@ -111,17 +111,12 @@
           shadow:{ enabled: true, color: 'rgba(0,0,0,0.5)', size:10, x:5, y:5 }
         },
 
-        layout: { randomSeed: 7, improvedLayout: true },
-
-        interaction:{ dragNodes: true, dragView: true, hover: true, hoverConnectedEdges: true,
-            navigationButtons: true, selectable: true, selectConnectedEdges: true, tooltipDelay: 200,
-            zoomView: true
-          },
+        layout: { randomSeed: undefined, improvedLayout: true },
 
         physics:{
             enabled: true,
-            barnesHut: { gravitationalConstant: -900, centralGravity: 0.03, springLength: 180,
-              springConstant: .01, damping: 0.5, avoidOverlap: .9
+            barnesHut: { gravitationalConstant: -900, centralGravity: 0.03, springLength: 170,
+              springConstant: .05, damping: 0.3, avoidOverlap: 5
             },
             maxVelocity: 50,
             minVelocity: 5,
