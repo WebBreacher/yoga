@@ -5,9 +5,8 @@
   <title>OSINT YOGA</title>
 
   <script type="text/javascript" src="files/vis.js"></script>
-  <link href="files/vis-network.min.css" rel="stylesheet" type="text/css">
   <link rel=”shortcut icon” href=”/favicon.ico” type=”image/x-icon” />
-  <style type="text/css"> #osintprocess { width: 85%; height: 500px; border: 1px solid lightgray; align-self: right;} </style>
+  <style type="text/css"> #osintprocess { width: 85%; height: 80%; border: 1px solid lightgray; align-self: right;} </style>
 </head>
 
 <body>
@@ -94,25 +93,20 @@
     // create a network
     var container = document.getElementById('osintprocess');
     var data = { nodes: nodes, edges: edges };
-
     var options = {
 		    interaction:{hover:true},
         autoResize: true,
-
         edges:{
           shadow: true,
           smooth: false,
           chosen: true,
           color:{ color:'black', highlight:'red', hover: 'orange' }
         },
-
         nodes:{
           shape: 'dot', size: 16,
           shadow:{ enabled: true, color: 'rgba(0,0,0,0.5)', size:10, x:5, y:5 }
         },
-
         layout: { randomSeed: undefined, improvedLayout: true },
-
         physics:{
             enabled: true,
             barnesHut: { gravitationalConstant: -900, centralGravity: 0.03, springLength: 170,
@@ -126,10 +120,9 @@
             adaptiveTimestep: true
         }
     };
-
     var network = new vis.Network(container, data, options);
-
   </script>
+
   <div  style="position: absolute; left: 2; width: 13%;">
     <h1>Usage:</h1>
     <ul>
