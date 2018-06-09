@@ -7,11 +7,11 @@
   <script type="text/javascript" src="files/vis.js"></script>
   <link href="files/vis-network.min.css" rel="stylesheet" type="text/css">
   <link rel=”shortcut icon” href=”/favicon.ico” type=”image/x-icon” />
-  
+
     <style type="text/css">
         #osintprocess {
-            width: 100%;
-            height: 650px;
+            width: 85%;
+            height: 500px;
             border: 1px solid lightgray;
         }
     </style>
@@ -180,10 +180,10 @@
               springLength: 220,
               springConstant: .1,
               damping: 0.5,
-              avoidOverlap: .59 // this controls the spinning
+              avoidOverlap: .9
             },
             maxVelocity: 50,
-            minVelocity: 0.2,
+            minVelocity: 5,
             solver: 'barnesHut',
             stabilization: {
               enabled: true,
@@ -192,18 +192,18 @@
               onlyDynamicEdges: false,
               fit: true
             },
-            timestep: 0.1, // this is good to change
+            timestep: .25,
             adaptiveTimestep: true
         }
     };
 
     var network = new vis.Network(container, data, options);
 
+
 </script>
 
-<p>
-    Created by Micah "<a href="https://twitter.com/webbreacher">WebBreacher</a>" Hoffman. <br><br>
-    Source is on Github at <a href="https://github.com/WebBreacher/osintprocess">https://github.com/WebBreacher/osintprocess</a> if you'd like to help add content.
-</p>
+Created by Micah "<a href="https://twitter.com/webbreacher">WebBreacher</a>" Hoffman. <br><br>
+Source is on Github at <a href="https://github.com/WebBreacher/yoga">https://github.com/WebBreacher/yoga</a> if you'd like to help add content.
+
 </body>
 </html>
