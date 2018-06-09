@@ -53,41 +53,41 @@
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 'email', to: 'socialMediaAcct', arrows: 'to', title: 'Look for email on social media'},
+        {from: 'email', to: 'socialMediaAcct', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for email on social media'},
         {from: 'email', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'email', to: 'searchEngine', arrows: 'to'},
-        {from: 'email', to: 'whoisSearch', arrows: 'to', title: 'Perform a reverse Whois search'},
-        {from: 'email', to: 'emailVerification', arrows: 'to', title: 'Is the email real/live?'},
-        {from: 'email', to: 'breachSiteSearch', arrows: 'to', title: 'Was email found in a breach?'},
-        {from: 'email', to: 'httpsCerts', arrows: 'to', title: 'Is email in an HTTPS certifcate?'},
+        {from: 'email', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Perform a reverse Whois search'},
+        {from: 'email', to: 'emailVerification', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is the email real/live?'},
+        {from: 'email', to: 'breachSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Was email found in a breach?'},
+        {from: 'email', to: 'httpsCerts', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is email in an HTTPS certifcate?'},
         {from: 'usrName', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'usrName', to: 'searchEngine', arrows: 'to'},
         {from: 'usrName', to: 'guessEmail', arrows: 'to'},
         {from: 'usrName', to: 'userEnum', arrows: 'to'},
-        {from: 'phoneNumber', to: 'socialMediaAcct', arrows: 'to', title: 'Look for phone on social media'},
+        {from: 'phoneNumber', to: 'socialMediaAcct', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for phone on social media'},
         {from: 'phoneNumber', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'phoneNumber', to: 'searchEngine', arrows: 'to'},
         {from: 'address', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'address', to: 'searchEngine', arrows: 'to'},
         {from: 'address', to: 'realEstateSearch', arrows: 'to'},
-        {from: 'firstLastName', to: 'socialMediaAcct', arrows: 'to', title: 'Look for name on social media'},
+        {from: 'firstLastName', to: 'socialMediaAcct', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for name on social media'},
         {from: 'firstLastName', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'firstLastName', to: 'searchEngine', arrows: 'to'},
-        {from: 'firstLastName', to: 'whoisSearch', arrows: 'to', title: 'Is the person a POC for a domain?'},
-        {from: 'profilePic', to: 'imgSearchEngine', arrows: 'to', title: 'Where else is the image used?'},
-        {from: 'profilePic', to: 'socialMediaAcct', arrows: 'to,from', title: 'Is the pic used on other social media?'},
+        {from: 'firstLastName', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is the person a POC for a domain?'},
+        {from: 'profilePic', to: 'imgSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Where else is the image used?'},
+        {from: 'profilePic', to: 'socialMediaAcct', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Is the pic used on other social media?'},
         {from: 'socialMediaAcct', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'domain', to: 'searchEngine', arrows: 'to'},
         {from: 'domain', to: 'dnsSearch', arrows: 'to,from'},
         {from: 'domain', to: 'whoisSearch', arrows: 'to'},
-        {from: 'domain', to: 'examineForServices', arrows: 'to', title: 'Scan system for open ports'},
+        {from: 'domain', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Scan system for open ports'},
         {from: 'ip', to: 'searchEngine', arrows: 'to'},
         {from: 'ip', to: 'dnsSearch', arrows: 'to,from'},
         {from: 'ip', to: 'ipGeoSearch', arrows: 'to'},
         {from: 'ip', to: 'ipInfoSearch', arrows: 'to'},
-        {from: 'ip', to: 'examineForServices', arrows: 'to', title: 'Scan system for open ports'},
-        {from: 'examineForServices', to: 'googleAnalytics', arrows: 'to', title: 'Harvest codes and search for other sites using them'},
-        {from: 'examineForServices', to: 'fileMetadata', arrows: 'to', title: 'Is there metadata in the file?'},
+        {from: 'ip', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Scan system for open ports'},
+        {from: 'examineForServices', to: 'googleAnalytics', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest codes and search for other sites using them'},
+        {from: 'examineForServices', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
         {from: 'examineForServices', to: 'httpsCerts', arrows: 'to'}
     ]);
 
@@ -138,8 +138,8 @@
   <div  style="position: absolute; left: 2; width: 13%;">
     <h1>Usage:</h1>
     <ul>
-      <li>Mouse over edges (lines connecting the nodes) for descriptions of the actions</li>
       <li>Click and drag nodes (dots) around the page to view all content</li>
+      <li>If edge connecting 2 nodes has an O in the middle, mouse over it for descriptions of the actions</li>
     </ul>
     <hr>
     Created by Micah "<a href="https://twitter.com/webbreacher">WebBreacher</a>" Hoffman.<br><br>
