@@ -7,24 +7,14 @@
   <script type="text/javascript" src="files/vis.js"></script>
   <link href="files/vis-network.min.css" rel="stylesheet" type="text/css">
   <link rel=”shortcut icon” href=”/favicon.ico” type=”image/x-icon” />
-
-    <style type="text/css">
-        #osintprocess { width: 85%; height: 500px; border: 1px solid lightgray; align-self: right;}
-    </style>
+  <style type="text/css"> #osintprocess { width: 85%; height: 500px; border: 1px solid lightgray; align-self: right;} </style>
 </head>
+
 <body>
   <h1>Your OSINT Graphical Analyzer (YOGA)</h1>
-<div id="osintprocess">
-  <div class="vis-network" style="position: relative; overflow: visible; touch-action: pan-y; -moz-user-select: none; width: 100%; height: 100%;" tabindex="'guessEmail'0">
-    <canvas style="position: relative; touch-action: none; -moz-user-select: none; width: 100%; height: 100%;"></canvas>
-    <div class="vis-manipulation" style="display: none;">
-    </div>
-  </div>
-</div>
+  <div id="osintprocess"></div>
 
-<pre id="eventSpan"></pre>
-
-<script type="text/javascript">
+  <script type="text/javascript">
     // create an array with nodes
     var nodes = new vis.DataSet([
         // Facts/data = group 1
@@ -62,7 +52,7 @@
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 'email', to: 'socialMediaAcct', arrows: 'to', label: 'Look for Email on Social Media'},
+        {from: 'email', to: 'socialMediaAcct', arrows: 'to', label: 'Look for email on social media'},
         {from: 'email', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'email', to: 'searchEngine', arrows: 'to'},
         {from: 'email', to: 'whoisSearch', arrows: 'to'},
@@ -73,13 +63,13 @@
         {from: 'usrName', to: 'searchEngine', arrows: 'to'},
         {from: 'usrName', to: 'guessEmail', arrows: 'to'},
         {from: 'usrName', to: 'userEnum', arrows: 'to'},
-        {from: 'phoneNumber', to: 'socialMediaAcct', arrows: 'to', label: 'Look for Phone on Social Media'},
+        {from: 'phoneNumber', to: 'socialMediaAcct', arrows: 'to', label: 'Look for phone on social media'},
         {from: 'phoneNumber', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'phoneNumber', to: 'searchEngine', arrows: 'to'},
         {from: 'address', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'address', to: 'searchEngine', arrows: 'to'},
         {from: 'address', to: 'realEstateSearch', arrows: 'to'},
-        {from: 'firstLastName', to: 'socialMediaAcct', arrows: 'to', label: 'Look for Name on Social Media'},
+        {from: 'firstLastName', to: 'socialMediaAcct', arrows: 'to', label: 'Look for name on social media'},
         {from: 'firstLastName', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'firstLastName', to: 'searchEngine', arrows: 'to'},
         {from: 'firstLastName', to: 'whoisSearch', arrows: 'to'},
@@ -89,12 +79,12 @@
         {from: 'domain', to: 'searchEngine', arrows: 'to'},
         {from: 'domain', to: 'dnsSearch', arrows: 'to,from'},
         {from: 'domain', to: 'whoisSearch', arrows: 'to'},
-        {from: 'domain', to: 'examineForServices', arrows: 'to'},
+        {from: 'domain', to: 'examineForServices', arrows: 'to', label: 'Scan system for open ports'},
         {from: 'ip', to: 'searchEngine', arrows: 'to'},
         {from: 'ip', to: 'dnsSearch', arrows: 'to,from'},
         {from: 'ip', to: 'ipGeoSearch', arrows: 'to'},
         {from: 'ip', to: 'ipInfoSearch', arrows: 'to'},
-        {from: 'ip', to: 'examineForServices', arrows: 'to'},
+        {from: 'ip', to: 'examineForServices', arrows: 'to', label: 'Scan system for open ports'},
         {from: 'examineForServices', to: 'googleAnalytics', arrows: 'to'},
         {from: 'examineForServices', to: 'fileMetadata', arrows: 'to'},
         {from: 'examineForServices', to: 'httpsCerts', arrows: 'to'}
@@ -112,29 +102,19 @@
           shadow: true,
           smooth: false,
           chosen: true,
-          color:{
-            color:'black',
-            highlight:'red',
-            hover: 'orange'
-          }
+          color:{ color:'black', highlight:'red', hover: 'orange' }
         },
 
         nodes:{
-          shape: 'dot',
-          size: 16,
+          shape: 'dot', size: 16,
           shadow:{
             enabled: true,
             color: 'rgba(0,0,0,0.5)',
-            size:10,
-            x:5,
-            y:5
+            size:10, x:5, y:5
           }
         },
 
-        layout: {
-          randomSeed: undefined,
-          improvedLayout: true
-        },
+        layout: { randomSeed: undefined, improvedLayout: true },
 
         interaction:{ dragNodes: true, dragView: true, hover: true, hoverConnectedEdges: true,
             navigationButtons: true, selectable: true, selectConnectedEdges: true, tooltipDelay: 200,
@@ -157,10 +137,10 @@
 
     var network = new vis.Network(container, data, options);
 
-</script>
+  </script>
 
-Created by Micah "<a href="https://twitter.com/webbreacher">WebBreacher</a>" Hoffman. <br><br>
-Source is on Github at <a href="https://github.com/WebBreacher/yoga">https://github.com/WebBreacher/yoga</a> if you'd like to help add content.
+  Created by Micah "<a href="https://twitter.com/webbreacher">WebBreacher</a>" Hoffman. <br><br>
+  Source is on Github at <a href="https://github.com/WebBreacher/yoga">https://github.com/WebBreacher/yoga</a> if you'd like to help add content.
 
 </body>
 </html>
