@@ -3,4 +3,4 @@ Your OSINT Graphical Analyzer (YOGA) is a project to help people understand diff
 
 # Uses
 1. You can visit https://yoga.osint.ninja and use the web pages hosted via Github
-2. Feel free to download the project and use it on your local systems. 
+2. Feel free to download the project and use it on your local systems.
