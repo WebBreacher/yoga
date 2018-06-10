@@ -7,12 +7,12 @@
   <script type="text/javascript" src="files/vis.js"></script>
   <link rel="shortcut icon" href='/favicon.ico' type="image/x-icon" />
   <link href="files/vis-network.min.css" rel="stylesheet" type="text/css" />
-  <style type="text/css"> #osintprocess { width: 85%; height: 80%; border: 1px solid lightgray; align-self: right;} </style>
+  <style type="text/css"> #yoga { width: 85%; height: 80%; border: 1px solid lightgray; align-self: right;} </style>
 </head>
 
 <body>
   <h1>Your OSINT Graphical Analyzer (YOGA)</h1>
-  <div id="osintprocess" style="position: absolute; right: 0;"></div>
+  <div id="yoga" style="position: absolute; right: 0;"></div>
 
 
   <!-- BELOW IS NODE AND EDGE DATA -->
@@ -35,8 +35,8 @@
         {id: 'string', label: 'Word/Idea/String', title: 'Ex: "Open Source Intelligence"', group: 1},
         {id: 'torHiddenService', label: 'Tor Hidden Service', title: 'Ex: abcdefghijklmnop.onion', group: 1},
         {id: 'usrName', label: 'Username', title: 'Ex: DreadPirateRoberts', group: 1},
-        {id: 'vehicle', label: 'Video', title: 'Ex: riot.mp4', group: 1},
-        {id: 'video', label: 'Vehicle', title: 'Ex: car or plane', group: 1},
+        {id: 'vehicle', label: 'Vehicle', title: 'Ex: car or plane', group: 1},
+        {id: 'video', label: 'Video', title: 'Ex: riot.mp4', group: 1},
         {id: 'wirelessBSSID', label: 'Wireless Network MAC (BSSID)', title: 'Ex: 00:C0:FF:EE:00:00', group: 1},
         {id: 'wirelessSSID', label: 'Wireless Network Name (SSID)', title: 'Ex: linksys', group: 1},
 
@@ -168,7 +168,7 @@
 
     <!-- DO NOT EDIT BELOW THIS LINE -->
     // create a network
-    var container = document.getElementById('osintprocess');
+    var container = document.getElementById('yoga');
     var data = { nodes: nodes, edges: edges };
     var options = {
 		    interaction:{ hover:true, navigationButtons: true, keyboard: true },
@@ -177,7 +177,7 @@
           shadow: true,
           smooth: true,
           chosen: true,
-          color:{ color:'black', highlight:'red', hover: 'orange' }
+          color:{ color:'black', highlight:'magenta', hover: 'lightgreen' }
         },
         nodes:{
           shape: 'dot', size: 16,
@@ -204,6 +204,7 @@
     <h1>Usage:</h1>
     <ul>
       <li>Click and drag nodes (dots) around the page to view all content</li>
+      <li>Use the arrow keys to move around and Page Down/Up to zoom out and in</li>
       <li>If edge connecting 2 nodes has an O in the middle, mouse over it for descriptions of the actions</li>
     </ul>
     <hr>
