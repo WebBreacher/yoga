@@ -34,6 +34,7 @@
         {id: 'audio', label: 'Audio', title: 'Ex: baby.wav', group: 1},
         {id: 'string', label: 'Word/Idea/String', title: 'Ex: "Open Source Intelligence"', group: 1},
         {id: 'hashtag', label: 'Hashtag', title: 'Ex: #OSINT', group: 1},
+        {id: 'businessName', label: 'Business Name', title: 'Ex: SpaceX', group: 1},
 
         // group 2 = yellow - searches
         {id: 'pplSearchEngine', label: 'People Search Engine', title: 'Ex: pipl.com', group: 2},
@@ -56,6 +57,7 @@
         {id: 'weddingSite', label: 'Wedding Site', title: 'Ex: theknot.com', group: 2},
         {id: 'translate', label: 'Translation Site', title: 'Ex: translate.google.com', group: 2},
         {id: 'mapSearch', label: 'Online Mapping Site', title: 'Ex: maps.google.com', group: 2},
+        {id: 'socialMediaSearch', label: 'Social Media Search', title: 'Ex: Search twitter.com', group: 1},
 
         // group 3 = red - other actions
         {id: 'emailVerification', label: 'Email Verification', title: 'Ex: hunter.io', group: 3},
@@ -129,9 +131,18 @@
         {from: 'gpsCoords', to: 'mapSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for GPS Coordinates on site'},
         {from: 'address', to: 'mapSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for Address on site'},
         {from: 'string', to: 'searchEngine', arrows: 'to'},
+        {from: 'businessName', to: 'searchEngine', arrows: 'to'},
+        {from: 'businessName', to: 'address', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business address(es)'},
+        {from: 'businessName', to: 'phoneNumber', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business phone(s)'},
+        {from: 'businessName', to: 'httpsCerts', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business name(s)'},
+        {from: 'businessName', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest Whois data (if any)'},
+        {from: 'businessName', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business name(s)'},
+        {from: 'businessName', to: 'emailVerification', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Figure out email format'},
         {from: 'hashtag', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'},
+        {from: 'hashtag', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'}
     ]);
 
+    <!-- DO NOT EDIT BELOW THIS LINE -->
     // create a network
     var container = document.getElementById('osintprocess');
     var data = { nodes: nodes, edges: edges };
