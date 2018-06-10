@@ -44,9 +44,7 @@
         {id: 'userEnum', label: 'User Enumeration', title: 'Ex: WhatsMyName Project', group: 3},
         {id: 'examineForServices', label: 'Examine for Services', title: 'Ex: Visit website', group: 3},
         {id: 'googleAnalytics', label: 'Google Analytics', title: 'Ex: Look for UA- in Page Source', group: 3},
-        {id: 'fileMetadata', label: 'Examine Files for Metadata', title: 'Ex: Use FOCA on domain', group: 3},
-
-        // group 4 = green - unused
+        {id: 'fileMetadata', label: 'Examine Files for Metadata', title: 'Ex: Use FOCA on domain', group: 3}
 
     ]);
 
@@ -98,7 +96,7 @@
         autoResize: true,
         edges:{
           shadow: true,
-          smooth: false,
+          smooth: true,
           chosen: true,
           color:{ color:'black', highlight:'red', hover: 'orange' }
         },
@@ -109,13 +107,13 @@
         layout: { randomSeed: undefined, improvedLayout: true },
         physics:{
             enabled: true,
-            barnesHut: { gravitationalConstant: -900, centralGravity: 0.03, springLength: 170,
-              springConstant: .05, damping: 0.3, avoidOverlap: 5
+            barnesHut: { gravitationalConstant: -15000, centralGravity: 0.03,
+              springConstant: .05, damping: 0.3, avoidOverlap: 0
             },
             maxVelocity: 50,
             minVelocity: 5,
             solver: 'barnesHut',
-            stabilization: { enabled: true, iterations: 1000, updateInterval: 200, fit: false},
+            stabilization: { enabled: true, iterations: 1000, updateInterval: 200, fit: true},
             timestep: .25,
             adaptiveTimestep: true
         }
