@@ -21,6 +21,7 @@
         {id: 'usrName', label: 'Username', title: 'Ex: DreadPirateRoberts', group: 1},
         {id: 'phoneNumber', label: 'Phone Number', title: 'Ex: +15558675309', group: 1},
         {id: 'address', label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA', group: 1},
+        {id: 'gpsCoords', label: 'GPS Coordinates', title: 'Ex: 44.883734,-93.2079853', group: 1},
         {id: 'firstLastName', label: 'First Last Name', title: 'Ex: Johan Smith', group: 1},
         {id: 'profilePic', label: 'Avatar/Profile Pic', title: 'An image from a social media account', group: 1},
         {id: 'socialMediaAcct', label: 'Social Media Account', title: 'Ex: Account on facebook.com', group: 1},
@@ -51,8 +52,10 @@
         {id: 'domainTypoSquatting', label: 'Domain Typo Squatting', title: 'Ex: dnstwist tool', group: 2},
         {id: 'wirelessNetSearch', label: 'Wireless Network Search', title: 'Ex: wigle.net', group: 2},
         {id: 'videoSearch', label: 'Video Search', title: 'Ex: youtube.com', group: 2},
-        {id: 'registrySite', label: 'Registry Site', title: 'Ex: theknot.com', group: 2},
-        {id: 'weddingSite', label: 'Wedding Site', title: 'Ex: TBD', group: 2},
+        {id: 'registrySite', label: 'Registry Site', title: 'Ex: registryfinder.com', group: 2},
+        {id: 'weddingSite', label: 'Wedding Site', title: 'Ex: theknot.com', group: 2},
+        {id: 'translate', label: 'Translation Site', title: 'Ex: translate.google.com', group: 2},
+        {id: 'mapSearch', label: 'Online Mapping Site', title: 'Ex: maps.google.com', group: 2},
 
         // group 3 = red - other actions
         {id: 'emailVerification', label: 'Email Verification', title: 'Ex: hunter.io', group: 3},
@@ -122,6 +125,9 @@
         {from: 'video', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
         {from: 'audio', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
         {from: 'audio', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for audio name, author, description'},
+        {from: 'gpsCoords', to: 'address', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Resolve GPS Coordinates to Address and back'},
+        {from: 'gpsCoords', to: 'mapSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for GPS Coordinates on site'},
+        {from: 'address', to: 'mapSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for Address on site'},
         {from: 'string', to: 'searchEngine', arrows: 'to'},
         {from: 'hashtag', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'},
     ]);
