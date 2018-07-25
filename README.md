@@ -1,3 +1,5 @@
+<img src="https://github.com/Pelikens/yoga/blob/master/New_logo_files/logo%20Yoga_color/logo%20Yoga_color_low_res.png?raw=true"/> 
+
 # What is this?
 Your OSINT Graphical Analyzer (YOGA) is a project to help people understand different courses of action to take based upon the data they have. Have a username? Click on it and review the attached/connected nodes for possible actions.
 
