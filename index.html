@@ -7,7 +7,7 @@
   <script type="text/javascript" src="files/vis.js"></script>
   <link rel="shortcut icon" href='/favicon.ico' type="image/x-icon" />
   <link href="files/vis-network.min.css" rel="stylesheet" type="text/css" />
-  <style type="text/css"> #yoga { width: 85%; height: 80%; border: 1px solid lightgray; align-self: right;} </style>
+  <style type="text/css"> #yoga { width: 75%; height: 80%; border: 1px solid lightgray; align-self: right;} </style>
 </head>
 
 <body>
@@ -21,10 +21,12 @@
         {id: 'address', label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA', group: 1},
         {id: 'audio', label: 'Audio', title: 'Ex: baby.wav', group: 1},
         {id: 'businessName', label: 'Business Name', title: 'Ex: SpaceX', group: 1},
+        {id: 'cryptocurrency', label: 'Crypto-currency Address', title: 'Ex: Bitcoin address', group: 1},
         {id: 'domain', label: 'Domain Name', title: 'Ex: www.sec487.info', group: 1},
         {id: 'email', label: 'Email Address', title: 'Ex: buttercup@example.com', group: 1},
         {id: 'firstLastName', label: 'First Last Name', title: 'Ex: Johan Smith', group: 1},
         {id: 'gpsCoords', label: 'GPS Coordinates', title: 'Ex: 44.883734,-93.2079853', group: 1},
+        {id: 'group', label: 'Group of people', title: 'Ex: FB group, gang, or club', group: 1},
         {id: 'hashtag', label: 'Hashtag', title: 'Ex: #OSINT', group: 1},
         {id: 'image', label: 'Image', title: 'Ex: plane.jpg', group: 1},
         {id: 'ip', label: 'IP address', title: 'Ex: 192.168.1.2', group: 1},
@@ -34,6 +36,7 @@
         {id: 'string', label: 'Word/Idea/String', title: 'Ex: "Open Source Intelligence"', group: 1},
         {id: 'torHiddenService', label: 'Tor Hidden Service', title: 'Ex: abcdefghijklmnop.onion', group: 1},
         {id: 'usrName', label: 'Username', title: 'Ex: DreadPirateRoberts', group: 1},
+        {id: 'url', label: 'URL (Web Location)', title: 'Ex: https://yoga.osint.ninja', group: 1},
         {id: 'vehicle', label: 'Vehicle', title: 'Ex: car or plane', group: 1},
         {id: 'video', label: 'Video', title: 'Ex: riot.mp4', group: 1},
         {id: 'wirelessBSSID', label: 'Wireless Network MAC (BSSID)', title: 'Ex: 00:C0:FF:EE:00:00', group: 1},
@@ -94,6 +97,7 @@
         {from: 'businessName', to: 'searchEngine', arrows: 'to'},
         {from: 'businessName', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business name(s)'},
         {from: 'businessName', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest Whois data (if any)'},
+        {from: 'cryptocurrency', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for postings'},
         {from: 'domain', to: 'dnsSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Look for other hosts in DNS'},
         {from: 'domain', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the site'},
         {from: 'domain', to: 'domainAnalytics', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'What software is site running?'},
@@ -123,6 +127,9 @@
         {from: 'firstLastName', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is the person a POC for a domain?'},
         {from: 'gpsCoords', to: 'address', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Resolve GPS Coordinates to Address and back'},
         {from: 'gpsCoords', to: 'mapSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for GPS Coordinates on site'},
+        {from: 'group', to: 'socialMediaSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for group on social media'},
+        {from: 'group', to: 'socialMediaAcct', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'What accounts are in group?'},
+        {from: 'group', to: 'searchEngine', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for group'},
         {from: 'hashtag', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'},
         {from: 'hashtag', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'},
         {from: 'image', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the image'},
@@ -152,6 +159,11 @@
         {from: 'usrName', to: 'guessEmail', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Figure out is the username is also local-part of email address'},
         {from: 'usrName', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find other data/sites where username is used'},
         {from: 'usrName', to: 'searchEngine', arrows: 'to'},
+        {from: 'url', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find info about URL'},
+        {from: 'url', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'What data is at URL?'},
+        {from: 'url', to: 'domain', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine the domain of URL'},
+        {from: 'url', to: 'ip', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine the IP of URL'},
+        {from: 'url', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'What data is at URL?'},
         {from: 'usrName', to: 'userEnum', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find other sites where this username was used'},
         {from: 'vehicle', to: 'vehicleIDSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look up the vehicle ID'},
         {from: 'vehicle', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look up the vehicle ID'},
