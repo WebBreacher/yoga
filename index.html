@@ -88,8 +88,8 @@
         {from: 'address', to: 'searchEngine', arrows: 'to'},
         {from: 'audio', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
         {from: 'audio', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for audio name, author, description'},
-		{from: 'audio', to: 'translate', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Translate audio if needed'},
-        {from: 'businessName', to: 'address', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business address(es)'},
+		    {from: 'audio', to: 'translate', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Translate audio if needed'},
+        {from: 'businessName', to: 'address', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for business address(es)'},
         {from: 'businessName', to: 'businessProfileSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business info'},
         {from: 'businessName', to: 'emailVerification', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Figure out email format'},
         {from: 'businessName', to: 'httpsCerts', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business name(s)'},
@@ -119,6 +119,9 @@
         {from: 'examineForServices', to: 'googleAnalytics', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest codes and search for other sites using them'},
         {from: 'examineForServices', to: 'httpsCerts', arrows: 'to'},
         {from: 'examineForServices', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the site'},
+        {from: 'fileMetadata', to: 'gpsCoords', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Gather GPS coordinates from metadata'},
+        {from: 'fileMetadata', to: 'firstLastName', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Gather first and last names from metadata'},
+        {from: 'fileMetadata', to: 'username', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Gather usernames from metadata'},
         {from: 'firstLastName', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Try to find other data'},
         {from: 'firstLastName', to: 'publicRecordsSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for official documents'},
         {from: 'firstLastName', to: 'registrySite', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Does the person have a public registry?'},
@@ -128,9 +131,11 @@
         {from: 'firstLastName', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is the person a POC for a domain?'},
         {from: 'gpsCoords', to: 'address', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Resolve GPS Coordinates to Address and back'},
         {from: 'gpsCoords', to: 'mapSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for GPS Coordinates on site'},
+        {from: 'gpsCoords', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for Social Media at GPS location'},
         {from: 'group', to: 'socialMediaSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for group on social media'},
         {from: 'group', to: 'socialMediaAcct', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'What accounts are in group?'},
         {from: 'group', to: 'searchEngine', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for group'},
+        {from: 'hashtag', to: 'gpsCoords', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX" at GPS location'},
         {from: 'hashtag', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'},
         {from: 'hashtag', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'},
         {from: 'image', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the image'},
@@ -149,9 +154,11 @@
         {from: 'phoneNumber', to: 'searchEngine', arrows: 'to'},
         {from: 'phoneNumber', to: 'socialMediaAcct', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for phone on social media'},
         {from: 'profilePic', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the pic'},
+        {from: 'profilePic', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine image for metadata'},
         {from: 'profilePic', to: 'imgSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Where else is the image used?'},
         {from: 'profilePic', to: 'socialMediaAcct', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Is the pic used on other social media?'},
         {from: 'socialMediaAcct', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the account'},
+        {from: 'socialMediaAcct', to: 'gpsCoords', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Geolocated posts?'},
         {from: 'socialMediaAcct', to: 'pplSearchEngine', arrows: 'to'},
         {from: 'string', to: 'searchEngine', arrows: 'to'},
         {from: 'string', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for string'},
@@ -170,7 +177,7 @@
         {from: 'vehicle', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look up the vehicle ID'},
         {from: 'video', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
         {from: 'video', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for video name/description'},
-		{from: 'video', to: 'translate', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Translate video\'s audio if needed'},
+	     	{from: 'video', to: 'translate', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Translate video\'s audio if needed'},
         {from: 'video', to: 'videoSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for video name/description'},
         {from: 'wirelessBSSID', to: 'searchEngine', arrows: 'to'},
         {from: 'wirelessBSSID', to: 'wirelessNetSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there known info about the WiFi network?'},
@@ -225,7 +232,7 @@
     Created by Micah "<a href="https://twitter.com/webbreacher" target="_blank">WebBreacher</a>" Hoffman.<br><br>
     Blog post introducing YOGA: <a href="https://webbreacher.com/2018/06/24/introducing-osint-yoga/" target="_blank">https://webbreacher.com/2018/06/24/introducing-osint-yoga/</a><br><br>
     Source is on Github at <a href="https://github.com/WebBreacher/yoga" target="_blank">https://github.com/WebBreacher/yoga</a> if you'd like to help add content or make this look prettier.
-	  
+
 	  Thanks to <a href="https://github.com/Pelikens">Pelikens</a> for the cool logo!
   </div>
 
