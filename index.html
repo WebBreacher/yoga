@@ -12,7 +12,7 @@
 
 <body>
   <h1>Your OSINT Graphical Analyzer (YOGA)</h1>
-  <div id="yoga" style="position: absolute; right: 0;"></div>
+	<div id="yoga" style="position: absolute; right: 0;"></div>
 
   <!-- BELOW IS NODE AND EDGE DATA -->
   <script type="text/javascript">
@@ -88,6 +88,7 @@
         {from: 'address', to: 'searchEngine', arrows: 'to'},
         {from: 'audio', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
         {from: 'audio', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for audio name, author, description'},
+		{from: 'audio', to: 'translate', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Translate audio if needed'},
         {from: 'businessName', to: 'address', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business address(es)'},
         {from: 'businessName', to: 'businessProfileSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business info'},
         {from: 'businessName', to: 'emailVerification', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Figure out email format'},
@@ -169,6 +170,7 @@
         {from: 'vehicle', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look up the vehicle ID'},
         {from: 'video', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
         {from: 'video', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for video name/description'},
+		{from: 'video', to: 'translate', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Translate video\'s audio if needed'},
         {from: 'video', to: 'videoSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for video name/description'},
         {from: 'wirelessBSSID', to: 'searchEngine', arrows: 'to'},
         {from: 'wirelessBSSID', to: 'wirelessNetSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there known info about the WiFi network?'},
@@ -212,7 +214,8 @@
   </script>
 
   <div  style="position: absolute; left: 2; width: 13%;">
-    <h1>Usage:</h1>
+    <img width=150px height=195px src="https://raw.githubusercontent.com/WebBreacher/yoga/master/New_logo_files/logo%20Yoga_color/logo%20Yoga_color_low_res.png">
+		<h1>Usage:</h1>
     <ul>
       <li>Click and drag nodes (dots) around the page to view all content</li>
       <li>Use the arrow keys to move around and Page Down/Up to zoom out and in</li>
@@ -222,6 +225,8 @@
     Created by Micah "<a href="https://twitter.com/webbreacher" target="_blank">WebBreacher</a>" Hoffman.<br><br>
     Blog post introducing YOGA: <a href="https://webbreacher.com/2018/06/24/introducing-osint-yoga/" target="_blank">https://webbreacher.com/2018/06/24/introducing-osint-yoga/</a><br><br>
     Source is on Github at <a href="https://github.com/WebBreacher/yoga" target="_blank">https://github.com/WebBreacher/yoga</a> if you'd like to help add content or make this look prettier.
+	  
+	  Thanks to <a href="https://github.com/Pelikens">Pelikens</a> for the cool logo!
   </div>
 
 </body>
