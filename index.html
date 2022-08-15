@@ -1,255 +1,285 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>OSINT YOGA</title>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>OSINT YOGA</title>
 
-  <script type="text/javascript" src="files/vis.js"></script>
-  <link rel="shortcut icon" href='/favicon.ico' type="image/x-icon" />
-  <link href="files/vis-network.min.css" rel="stylesheet" type="text/css" />
-  <style type="text/css"> #yoga { width: 75%; height: 80%; border: 1px solid lightgray; align-self: right;} </style>
+    <script type="text/javascript" src="files/vis.js"></script>
+    <link rel="shortcut icon" href='/favicon.ico' type="image/x-icon" />
+    <link href="files/vis-network.min.css" rel="stylesheet" type="text/css" />
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133767888-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133767888-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    gtag('config', 'UA-133767888-3');
-  </script>
-</head>
+      gtag('config', 'UA-133767888-3');
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Rubik:ital@0;1&display=swap');
+      body {
+        font-family: 'Rubik', Georgia, 'Times New Roman', Times, serif;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      .heading {
+        text-align: center;
+      }
+      #yoga {
+        position: absolute;
+        right: 0;
+        margin-right: 20px;
+        width: 75%;
+        height: 80%;
+        border: 1px solid lightgray;
+        border-radius: 16px;
+        align-self: right;
+      }
+      .main-div {
+        position: absolute;
+        left: 2;
+        width: 13%;
+      }
+      .logo {
+        width: 150px; 
+        height: 195px;
+      }
+      
+    </style>
+  </head>
 
-<body>
-  <h1>Your OSINT Graphical Analyzer (YOGA)</h1>
-	<div id="yoga" style="position: absolute; right: 0;"></div>
+  <body>
+    <h1 class="heading">Your OSINT Graphical Analyzer (YOGA)</h1>
+    <div id="yoga"></div>
 
-  <!-- BELOW IS NODE AND EDGE DATA -->
-  <script type="text/javascript">
-    var nodes = new vis.DataSet([
-        // group 1 = blue - facts and data
-        {id: 'address', label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA', group: 1},
-        {id: 'audio', label: 'Audio', title: 'Ex: baby.wav', group: 1},
-        {id: 'businessName', label: 'Business Name', title: 'Ex: SpaceX', group: 1},
-        {id: 'cryptocurrency', label: 'Crypto-currency Address', title: 'Ex: Bitcoin address', group: 1},
-        {id: 'domain', label: 'Domain Name', title: 'Ex: www.sec487.info', group: 1},
-        {id: 'email', label: 'Email Address', title: 'Ex: buttercup@example.com', group: 1},
-        {id: 'firstLastName', label: 'First Last Name', title: 'Ex: Johan Smith', group: 1},
-        {id: 'governmentRecords', label: 'Government Records', title: 'Ex: Marriage License', group: 1},
-        {id: 'gpsCoords', label: 'GPS Coordinates', title: 'Ex: 44.883734,-93.2079853', group: 1},
-        {id: 'group', label: 'Group of people', title: 'Ex: FB group, gang, or club', group: 1},
-        {id: 'hashtag', label: 'Hashtag', title: 'Ex: #OSINT', group: 1},
-        {id: 'image', label: 'Image', title: 'Ex: plane.jpg', group: 1},
-        {id: 'ip', label: 'IP address', title: 'Ex: 192.168.1.2', group: 1},
-        {id: 'phoneNumber', label: 'Phone Number', title: 'Ex: +15558675309', group: 1},
-        {id: 'profilePic', label: 'Avatar/Profile Pic', title: 'An image from a social media account', group: 1},
-        {id: 'socialMediaAcct', label: 'Social Media Account', title: 'Ex: Account on facebook.com', group: 1},
-        {id: 'string', label: 'Word/Idea/String', title: 'Ex: "Open Source Intelligence"', group: 1},
-        {id: 'torHiddenService', label: 'Tor Hidden Service', title: 'Ex: abcdefghijklmnop.onion', group: 1},
-        {id: 'usrName', label: 'Username', title: 'Ex: DreadPirateRoberts', group: 1},
-        {id: 'url', label: 'URL (Web Location)', title: 'Ex: https://yoga.osint.ninja', group: 1},
-        {id: 'vehicle', label: 'Vehicle', title: 'Ex: car or plane', group: 1},
-        {id: 'video', label: 'Video', title: 'Ex: riot.mp4', group: 1},
-        {id: 'wirelessBSSID', label: 'Wireless Network MAC (BSSID)', title: 'Ex: 00:C0:FF:EE:00:00', group: 1},
-        {id: 'wirelessSSID', label: 'Wireless Network Name (SSID)', title: 'Ex: linksys', group: 1},
+    <!-- BELOW IS NODE AND EDGE DATA -->
+    <script type="text/javascript">
+      var nodes = new vis.DataSet([
+          // group 1 = blue - facts and data
+          {id: 'address', label: 'Physical Address', title: 'Ex: 1 Main Street, Anywhere, XX, USA', group: 1},
+          {id: 'audio', label: 'Audio', title: 'Ex: baby.wav', group: 1},
+          {id: 'businessName', label: 'Business Name', title: 'Ex: SpaceX', group: 1},
+          {id: 'cryptocurrency', label: 'Crypto-currency Address', title: 'Ex: Bitcoin address', group: 1},
+          {id: 'domain', label: 'Domain Name', title: 'Ex: www.sec487.info', group: 1},
+          {id: 'email', label: 'Email Address', title: 'Ex: buttercup@example.com', group: 1},
+          {id: 'firstLastName', label: 'First Last Name', title: 'Ex: Johan Smith', group: 1},
+          {id: 'governmentRecords', label: 'Government Records', title: 'Ex: Marriage License', group: 1},
+          {id: 'gpsCoords', label: 'GPS Coordinates', title: 'Ex: 44.883734,-93.2079853', group: 1},
+          {id: 'group', label: 'Group of people', title: 'Ex: FB group, gang, or club', group: 1},
+          {id: 'hashtag', label: 'Hashtag', title: 'Ex: #OSINT', group: 1},
+          {id: 'image', label: 'Image', title: 'Ex: plane.jpg', group: 1},
+          {id: 'ip', label: 'IP address', title: 'Ex: 192.168.1.2', group: 1},
+          {id: 'phoneNumber', label: 'Phone Number', title: 'Ex: +15558675309', group: 1},
+          {id: 'profilePic', label: 'Avatar/Profile Pic', title: 'An image from a social media account', group: 1},
+          {id: 'socialMediaAcct', label: 'Social Media Account', title: 'Ex: Account on facebook.com', group: 1},
+          {id: 'string', label: 'Word/Idea/String', title: 'Ex: "Open Source Intelligence"', group: 1},
+          {id: 'torHiddenService', label: 'Tor Hidden Service', title: 'Ex: abcdefghijklmnop.onion', group: 1},
+          {id: 'usrName', label: 'Username', title: 'Ex: DreadPirateRoberts', group: 1},
+          {id: 'url', label: 'URL (Web Location)', title: 'Ex: https://yoga.osint.ninja', group: 1},
+          {id: 'vehicle', label: 'Vehicle', title: 'Ex: car or plane', group: 1},
+          {id: 'video', label: 'Video', title: 'Ex: riot.mp4', group: 1},
+          {id: 'wirelessBSSID', label: 'Wireless Network MAC (BSSID)', title: 'Ex: 00:C0:FF:EE:00:00', group: 1},
+          {id: 'wirelessSSID', label: 'Wireless Network Name (SSID)', title: 'Ex: linksys', group: 1},
 
-        // group 2 = yellow - searches
-        {id: 'archiveSiteSearch', label: 'Archive Site Search', title: 'Ex: archive.org', group: 2},
-        {id: 'breachSiteSearch', label: 'Breach Site Search', title: 'Ex: haveibeenpwnd.com', group: 2},
-        {id: 'businessProfileSearch', label: 'Search for Business Reviews', title: 'Ex: opencorporates.com', group: 2},
-        {id: 'dnsSearch', label: 'DNS Search', title: 'Ex: dig, viewdns.info', group: 2},
-        {id: 'domainAnalytics', label: 'Domain Analytics', title: 'Ex: builtwith.com', group: 2},
-        {id: 'domainTypoSquatting', label: 'Domain Typo Squatting', title: 'Ex: dnstwist tool', group: 2},
-        {id: 'hostRepSearch', label: 'Host Reputation Search', title: 'Ex: senderbase.com', group: 2},
-        {id: 'httpsCerts', label: 'Examine HTTPS Certs', title: 'Ex: censys.io', group: 2},
-        {id: 'imgSearchEngine', label: 'Image Search Engine', title: 'Ex: images.google.com', group: 2},
-        {id: 'ipGeoSearch', label: 'IP Geolocation Search', title: '', group: 2},
-        {id: 'ipInfoSearch', label: 'IP Information Search', title: 'Ex: viewdns.info', group: 2},
-        {id: 'mapSearch', label: 'Online Mapping Site', title: 'Ex: maps.google.com', group: 2},
-        {id: 'passiveDNSSearch', label: 'Passive DNS search', title: 'Ex: passivetotal.org', group: 2},
-        {id: 'pplSearchEngine', label: 'People Search Engine', title: 'Ex: pipl.com', group: 2},
-        {id: 'publicRecordsSearch', label: 'Search Public Government Records', title: 'Ex: marriage or business license', group: 2},
-        {id: 'realEstateSearch', label: 'Real Estate Search', title: 'Ex: trulia.com', group: 2},
-        {id: 'registrySite', label: 'Registry Site', title: 'Ex: registryfinder.com', group: 2},
-        {id: 'searchEngine', label: 'Search Engine', title: 'Ex. duckduckgo.com', group: 2},
-        {id: 'socialMediaSearch', label: 'Social Media Search', title: 'Ex: Search twitter.com', group: 2},
-        {id: 'translate', label: 'Translation Site', title: 'Ex: translate.google.com', group: 2},
-        {id: 'vehicleIDSearch', label: 'Vehicle ID Search', title: 'Ex: flighttracker24.com', group: 2},
-        {id: 'videoSearch', label: 'Video Search', title: 'Ex: youtube.com', group: 2},
-        {id: 'weddingSite', label: 'Wedding Site', title: 'Ex: theknot.com', group: 2},
-        {id: 'whoisSearch', label: 'Whois Search', title: 'Ex: centralops.net', group: 2},
-        {id: 'wirelessNetSearch', label: 'Wireless Network Search', title: 'Ex: wigle.net', group: 2},
+          // group 2 = yellow - searches
+          {id: 'archiveSiteSearch', label: 'Archive Site Search', title: 'Ex: archive.org', group: 2},
+          {id: 'breachSiteSearch', label: 'Breach Site Search', title: 'Ex: haveibeenpwnd.com', group: 2},
+          {id: 'businessProfileSearch', label: 'Search for Business Reviews', title: 'Ex: opencorporates.com', group: 2},
+          {id: 'dnsSearch', label: 'DNS Search', title: 'Ex: dig, viewdns.info', group: 2},
+          {id: 'domainAnalytics', label: 'Domain Analytics', title: 'Ex: builtwith.com', group: 2},
+          {id: 'domainTypoSquatting', label: 'Domain Typo Squatting', title: 'Ex: dnstwist tool', group: 2},
+          {id: 'hostRepSearch', label: 'Host Reputation Search', title: 'Ex: senderbase.com', group: 2},
+          {id: 'httpsCerts', label: 'Examine HTTPS Certs', title: 'Ex: censys.io', group: 2},
+          {id: 'imgSearchEngine', label: 'Image Search Engine', title: 'Ex: images.google.com', group: 2},
+          {id: 'ipGeoSearch', label: 'IP Geolocation Search', title: '', group: 2},
+          {id: 'ipInfoSearch', label: 'IP Information Search', title: 'Ex: viewdns.info', group: 2},
+          {id: 'mapSearch', label: 'Online Mapping Site', title: 'Ex: maps.google.com', group: 2},
+          {id: 'passiveDNSSearch', label: 'Passive DNS search', title: 'Ex: passivetotal.org', group: 2},
+          {id: 'pplSearchEngine', label: 'People Search Engine', title: 'Ex: pipl.com', group: 2},
+          {id: 'publicRecordsSearch', label: 'Search Public Government Records', title: 'Ex: marriage or business license', group: 2},
+          {id: 'realEstateSearch', label: 'Real Estate Search', title: 'Ex: trulia.com', group: 2},
+          {id: 'registrySite', label: 'Registry Site', title: 'Ex: registryfinder.com', group: 2},
+          {id: 'searchEngine', label: 'Search Engine', title: 'Ex. duckduckgo.com', group: 2},
+          {id: 'socialMediaSearch', label: 'Social Media Search', title: 'Ex: Search twitter.com', group: 2},
+          {id: 'translate', label: 'Translation Site', title: 'Ex: translate.google.com', group: 2},
+          {id: 'vehicleIDSearch', label: 'Vehicle ID Search', title: 'Ex: flighttracker24.com', group: 2},
+          {id: 'videoSearch', label: 'Video Search', title: 'Ex: youtube.com', group: 2},
+          {id: 'weddingSite', label: 'Wedding Site', title: 'Ex: theknot.com', group: 2},
+          {id: 'whoisSearch', label: 'Whois Search', title: 'Ex: centralops.net', group: 2},
+          {id: 'wirelessNetSearch', label: 'Wireless Network Search', title: 'Ex: wigle.net', group: 2},
 
-        // group 3 = red - other actions
-        {id: 'emailVerification', label: 'Email Verification', title: 'Ex: hunter.io', group: 3},
-        {id: 'examineForServices', label: 'Examine for Services', title: 'Ex: Visit website', group: 3},
-        {id: 'fileMetadata', label: 'Examine Files for Metadata', title: 'Ex: Use FOCA on domain', group: 3},
-        {id: 'googleAnalytics', label: 'Google Analytics', title: 'Ex: Look for UA- in Page Source', group: 3},
-        {id: 'guessEmail', label: 'Guess at email address', title: 'Ex: XXXX@gmail.com', group: 3},
-        {id: 'userEnum', label: 'User Enumeration', title: 'Ex: WhatsMyName Project', group: 3}
+          // group 3 = red - other actions
+          {id: 'emailVerification', label: 'Email Verification', title: 'Ex: hunter.io', group: 3},
+          {id: 'examineForServices', label: 'Examine for Services', title: 'Ex: Visit website', group: 3},
+          {id: 'fileMetadata', label: 'Examine Files for Metadata', title: 'Ex: Use FOCA on domain', group: 3},
+          {id: 'googleAnalytics', label: 'Google Analytics', title: 'Ex: Look for UA- in Page Source', group: 3},
+          {id: 'guessEmail', label: 'Guess at email address', title: 'Ex: XXXX@gmail.com', group: 3},
+          {id: 'userEnum', label: 'User Enumeration', title: 'Ex: WhatsMyName Project', group: 3}
 
-    ]);
+      ]);
 
-    // create an array with edges
-    var edges = new vis.DataSet([
-        {from: 'address', to: 'mapSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for Address on site'},
-        {from: 'address', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Try to find other data'},
-        {from: 'address', to: 'publicRecordsSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for official documents'},
-        {from: 'address', to: 'realEstateSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for buyers, pics inside home, etc'},
-        {from: 'address', to: 'searchEngine', arrows: 'to'},
-        {from: 'audio', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
-        {from: 'audio', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for audio name, author, description'},
-		    {from: 'audio', to: 'translate', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Translate audio if needed'},
-        {from: 'businessName', to: 'address', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for business address(es)'},
-        {from: 'businessName', to: 'businessProfileSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business info'},
-        {from: 'businessName', to: 'emailVerification', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Figure out email format'},
-        {from: 'businessName', to: 'governmentRecords', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Look for licenses and filings'},
-        {from: 'businessName', to: 'httpsCerts', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business name(s)'},
-        {from: 'businessName', to: 'phoneNumber', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business phone(s)'},
-        {from: 'businessName', to: 'publicRecordsSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for official documents'},
-        {from: 'businessName', to: 'searchEngine', arrows: 'to'},
-        {from: 'businessName', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business name(s)'},
-        {from: 'businessName', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest Whois data (if any)'},
-        {from: 'cryptocurrency', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for postings'},
-        {from: 'domain', to: 'dnsSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Look for other hosts in DNS'},
-        {from: 'domain', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the site'},
-        {from: 'domain', to: 'domainAnalytics', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'What software is site running?'},
-        {from: 'domain', to: 'domainTypoSquatting', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Who has similar domains to this one?'},
-        {from: 'domain', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Scan system for open ports'},
-        {from: 'domain', to: 'hostRepSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is domain blacklisted? known for malware?'},
-        {from: 'domain', to: 'passiveDNSSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine DNS history'},
-        {from: 'domain', to: 'passiveDNSSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find co-located domains'},	    
-        {from: 'domain', to: 'searchEngine', arrows: 'to'},
-        {from: 'domain', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest Whois data (if any)'},
-        {from: 'email', to: 'breachSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Was email found in a breach?'},
-        {from: 'email', to: 'emailVerification', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is the email real/live?'},
-        {from: 'email', to: 'httpsCerts', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is email in an HTTPS certifcate?'},
-        {from: 'email', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Try to find other data'},
-        {from: 'email', to: 'searchEngine', arrows: 'to'},
-        {from: 'email', to: 'socialMediaAcct', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for email on social media'},
-        {from: 'email', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Perform a reverse Whois search'},
-        {from: 'examineForServices', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
-        {from: 'examineForServices', to: 'googleAnalytics', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest codes and search for other sites using them'},
-        {from: 'examineForServices', to: 'httpsCerts', arrows: 'to'},
-        {from: 'examineForServices', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the site'},
-        {from: 'firstLastName', to: 'governmentRecords', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Looks for government records'},
-        {from: 'fileMetadata', to: 'gpsCoords', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Gather GPS coordinates from metadata'},
-        {from: 'fileMetadata', to: 'firstLastName', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Gather first and last names from metadata'},
-        {from: 'fileMetadata', to: 'username', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Gather usernames from metadata'},
-        {from: 'firstLastName', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Try to find other data'},
-        {from: 'firstLastName', to: 'publicRecordsSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for official documents'},
-        {from: 'firstLastName', to: 'registrySite', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Does the person have a public registry?'},
-        {from: 'firstLastName', to: 'searchEngine', arrows: 'to'},
-        {from: 'firstLastName', to: 'socialMediaAcct', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for name on social media'},
-        {from: 'firstLastName', to: 'weddingSite', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Does the person have a wedding site?'},
-        {from: 'firstLastName', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is the person a POC for a domain?'},
-        {from: 'gpsCoords', to: 'address', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Resolve GPS Coordinates to Address and back'},
-        {from: 'gpsCoords', to: 'mapSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for GPS Coordinates on site'},
-        {from: 'gpsCoords', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for Social Media at GPS location'},
-        {from: 'group', to: 'socialMediaSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for group on social media'},
-        {from: 'group', to: 'socialMediaAcct', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'What accounts are in group?'},
-        {from: 'group', to: 'searchEngine', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for group'},
-        {from: 'hashtag', to: 'gpsCoords', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX" at GPS location'},
-        {from: 'hashtag', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'},
-        {from: 'hashtag', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'},
-        {from: 'image', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the image'},
-        {from: 'image', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
-        {from: 'image', to: 'imgSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Where else is the image used?'},
-        {from: 'image', to: 'profilePic', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Is this image a profile pic?'},
-        {from: 'image', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for image name'},
-        {from: 'ip', to: 'dnsSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Does IP resolve to domain(s)?'},
-        {from: 'ip', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Scan system for open ports'},
-        {from: 'ip', to: 'hostRepSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is IP blacklisted? known for malware?'},
-        {from: 'ip', to: 'ipGeoSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Where does the IP geolocate to?'},
-        {from: 'ip', to: 'ipInfoSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Who is the IP registered to?'},
-        {from: 'ip', to: 'searchEngine', arrows: 'to'},
-        {from: 'phoneNumber', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Try to find other data'},
-        {from: 'phoneNumber', to: 'publicRecordsSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for official documents'},
-        {from: 'phoneNumber', to: 'searchEngine', arrows: 'to'},
-        {from: 'phoneNumber', to: 'socialMediaAcct', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for phone on social media'},
-        {from: 'profilePic', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the pic'},
-        {from: 'profilePic', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine image for metadata'},
-        {from: 'profilePic', to: 'imgSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Where else is the image used?'},
-        {from: 'profilePic', to: 'socialMediaAcct', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Is the pic used on other social media?'},
-        {from: 'socialMediaAcct', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the account'},
-        {from: 'socialMediaAcct', to: 'gpsCoords', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Geolocated posts?'},
-        {from: 'socialMediaAcct', to: 'pplSearchEngine', arrows: 'to'},
-        {from: 'string', to: 'searchEngine', arrows: 'to'},
-        {from: 'string', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for string'},
-        {from: 'torHiddenService', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Visit resource'},
-        {from: 'torHiddenService', to: 'searchEngine', arrows: 'to'},
-        {from: 'usrName', to: 'guessEmail', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Figure out is the username is also local-part of email address'},
-        {from: 'usrName', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find other data/sites where username is used'},
-        {from: 'usrName', to: 'searchEngine', arrows: 'to'},
-        {from: 'usrName', to: 'userEnum', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find other sites where this username was used'},
-        {from: 'url', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find info about URL'},
-        {from: 'url', to: 'domain', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine the domain of URL'},
-        {from: 'url', to: 'ip', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine the IP of URL'},
-        {from: 'url', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'What data is at URL?'},
-        {from: 'vehicle', to: 'vehicleIDSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look up the vehicle ID/VIN'},
-        {from: 'vehicle', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look up the vehicle ID'},
-        {from: 'video', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
-        {from: 'video', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for video name/description'},
-	     	{from: 'video', to: 'translate', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Translate video\'s audio if needed'},
-        {from: 'video', to: 'videoSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for video name/description'},
-        {from: 'weddingSite', to: 'hashtag', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Are they using a hashtag for this wedding?'},
-        {from: 'weddingSite', to: 'registrySite', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Is there a link between wedding and registry sites?'},
-        {from: 'wirelessBSSID', to: 'searchEngine', arrows: 'to'},
-        {from: 'wirelessBSSID', to: 'wirelessNetSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there known info about the WiFi network?'},
-        {from: 'wirelessSSID', to: 'searchEngine', arrows: 'to'},
-        {from: 'wirelessSSID', to: 'wirelessNetSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there known info about the WiFi network?'}
-    ]);
+      // create an array with edges
+      var edges = new vis.DataSet([
+          {from: 'address', to: 'mapSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for Address on site'},
+          {from: 'address', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Try to find other data'},
+          {from: 'address', to: 'publicRecordsSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for official documents'},
+          {from: 'address', to: 'realEstateSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for buyers, pics inside home, etc'},
+          {from: 'address', to: 'searchEngine', arrows: 'to'},
+          {from: 'audio', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
+          {from: 'audio', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for audio name, author, description'},
+          {from: 'audio', to: 'translate', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Translate audio if needed'},
+          {from: 'businessName', to: 'address', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for business address(es)'},
+          {from: 'businessName', to: 'businessProfileSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business info'},
+          {from: 'businessName', to: 'emailVerification', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Figure out email format'},
+          {from: 'businessName', to: 'governmentRecords', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Look for licenses and filings'},
+          {from: 'businessName', to: 'httpsCerts', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business name(s)'},
+          {from: 'businessName', to: 'phoneNumber', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business phone(s)'},
+          {from: 'businessName', to: 'publicRecordsSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for official documents'},
+          {from: 'businessName', to: 'searchEngine', arrows: 'to'},
+          {from: 'businessName', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for business name(s)'},
+          {from: 'businessName', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest Whois data (if any)'},
+          {from: 'cryptocurrency', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for postings'},
+          {from: 'domain', to: 'dnsSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Look for other hosts in DNS'},
+          {from: 'domain', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the site'},
+          {from: 'domain', to: 'domainAnalytics', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'What software is site running?'},
+          {from: 'domain', to: 'domainTypoSquatting', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Who has similar domains to this one?'},
+          {from: 'domain', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Scan system for open ports'},
+          {from: 'domain', to: 'hostRepSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is domain blacklisted? known for malware?'},
+          {from: 'domain', to: 'passiveDNSSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine DNS history'},
+          {from: 'domain', to: 'passiveDNSSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find co-located domains'},	    
+          {from: 'domain', to: 'searchEngine', arrows: 'to'},
+          {from: 'domain', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest Whois data (if any)'},
+          {from: 'email', to: 'breachSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Was email found in a breach?'},
+          {from: 'email', to: 'emailVerification', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is the email real/live?'},
+          {from: 'email', to: 'httpsCerts', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is email in an HTTPS certifcate?'},
+          {from: 'email', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Try to find other data'},
+          {from: 'email', to: 'searchEngine', arrows: 'to'},
+          {from: 'email', to: 'socialMediaAcct', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for email on social media'},
+          {from: 'email', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Perform a reverse Whois search'},
+          {from: 'examineForServices', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
+          {from: 'examineForServices', to: 'googleAnalytics', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest codes and search for other sites using them'},
+          {from: 'examineForServices', to: 'httpsCerts', arrows: 'to'},
+          {from: 'examineForServices', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the site'},
+          {from: 'firstLastName', to: 'governmentRecords', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Looks for government records'},
+          {from: 'fileMetadata', to: 'gpsCoords', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Gather GPS coordinates from metadata'},
+          {from: 'fileMetadata', to: 'firstLastName', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Gather first and last names from metadata'},
+          {from: 'fileMetadata', to: 'username', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Gather usernames from metadata'},
+          {from: 'firstLastName', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Try to find other data'},
+          {from: 'firstLastName', to: 'publicRecordsSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for official documents'},
+          {from: 'firstLastName', to: 'registrySite', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Does the person have a public registry?'},
+          {from: 'firstLastName', to: 'searchEngine', arrows: 'to'},
+          {from: 'firstLastName', to: 'socialMediaAcct', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for name on social media'},
+          {from: 'firstLastName', to: 'weddingSite', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Does the person have a wedding site?'},
+          {from: 'firstLastName', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is the person a POC for a domain?'},
+          {from: 'gpsCoords', to: 'address', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Resolve GPS Coordinates to Address and back'},
+          {from: 'gpsCoords', to: 'mapSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for GPS Coordinates on site'},
+          {from: 'gpsCoords', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for Social Media at GPS location'},
+          {from: 'group', to: 'socialMediaSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for group on social media'},
+          {from: 'group', to: 'socialMediaAcct', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'What accounts are in group?'},
+          {from: 'group', to: 'searchEngine', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Search for group'},
+          {from: 'hashtag', to: 'gpsCoords', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX" at GPS location'},
+          {from: 'hashtag', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'},
+          {from: 'hashtag', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for hashtag "#XXXX"'},
+          {from: 'image', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the image'},
+          {from: 'image', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
+          {from: 'image', to: 'imgSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Where else is the image used?'},
+          {from: 'image', to: 'profilePic', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Is this image a profile pic?'},
+          {from: 'image', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for image name'},
+          {from: 'ip', to: 'dnsSearch', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Does IP resolve to domain(s)?'},
+          {from: 'ip', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Scan system for open ports'},
+          {from: 'ip', to: 'hostRepSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is IP blacklisted? known for malware?'},
+          {from: 'ip', to: 'ipGeoSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Where does the IP geolocate to?'},
+          {from: 'ip', to: 'ipInfoSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Who is the IP registered to?'},
+          {from: 'ip', to: 'searchEngine', arrows: 'to'},
+          {from: 'phoneNumber', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Try to find other data'},
+          {from: 'phoneNumber', to: 'publicRecordsSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for official documents'},
+          {from: 'phoneNumber', to: 'searchEngine', arrows: 'to'},
+          {from: 'phoneNumber', to: 'socialMediaAcct', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for phone on social media'},
+          {from: 'profilePic', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the pic'},
+          {from: 'profilePic', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine image for metadata'},
+          {from: 'profilePic', to: 'imgSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Where else is the image used?'},
+          {from: 'profilePic', to: 'socialMediaAcct', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Is the pic used on other social media?'},
+          {from: 'socialMediaAcct', to: 'archiveSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look for the account'},
+          {from: 'socialMediaAcct', to: 'gpsCoords', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Geolocated posts?'},
+          {from: 'socialMediaAcct', to: 'pplSearchEngine', arrows: 'to'},
+          {from: 'string', to: 'searchEngine', arrows: 'to'},
+          {from: 'string', to: 'socialMediaSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for string'},
+          {from: 'torHiddenService', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Visit resource'},
+          {from: 'torHiddenService', to: 'searchEngine', arrows: 'to'},
+          {from: 'usrName', to: 'guessEmail', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Figure out is the username is also local-part of email address'},
+          {from: 'usrName', to: 'pplSearchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find other data/sites where username is used'},
+          {from: 'usrName', to: 'searchEngine', arrows: 'to'},
+          {from: 'usrName', to: 'userEnum', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find other sites where this username was used'},
+          {from: 'url', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find info about URL'},
+          {from: 'url', to: 'domain', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine the domain of URL'},
+          {from: 'url', to: 'ip', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine the IP of URL'},
+          {from: 'url', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'What data is at URL?'},
+          {from: 'vehicle', to: 'vehicleIDSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look up the vehicle ID/VIN'},
+          {from: 'vehicle', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Look up the vehicle ID'},
+          {from: 'video', to: 'fileMetadata', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there metadata in the file?'},
+          {from: 'video', to: 'searchEngine', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for video name/description'},
+          {from: 'video', to: 'translate', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Translate video\'s audio if needed'},
+          {from: 'video', to: 'videoSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Search for video name/description'},
+          {from: 'weddingSite', to: 'hashtag', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Are they using a hashtag for this wedding?'},
+          {from: 'weddingSite', to: 'registrySite', arrows: 'to,from', label: 'O', font: {align: 'middle'}, title: 'Is there a link between wedding and registry sites?'},
+          {from: 'wirelessBSSID', to: 'searchEngine', arrows: 'to'},
+          {from: 'wirelessBSSID', to: 'wirelessNetSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there known info about the WiFi network?'},
+          {from: 'wirelessSSID', to: 'searchEngine', arrows: 'to'},
+          {from: 'wirelessSSID', to: 'wirelessNetSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is there known info about the WiFi network?'}
+      ]);
 
 
-    <!-- DO NOT EDIT BELOW THIS LINE -->
-    // create a network
-    var container = document.getElementById('yoga');
-    var data = { nodes: nodes, edges: edges };
-    var options = {
-		    interaction:{ hover:true, navigationButtons: true, keyboard: true },
-        autoResize: true,
-        edges:{
-          shadow: true,
-          smooth: true,
-          chosen: true,
-          color:{ color:'black', highlight:'magenta', hover: 'lightgreen' }
-        },
-        nodes:{
-          shape: 'dot', size: 16,
-          shadow:{ enabled: true, color: 'rgba(0,0,0,0.5)', size:10, x:5, y:5 }
-        },
-        layout: { randomSeed: undefined, improvedLayout: true },
-        physics:{
-            enabled: true,
-            barnesHut: { gravitationalConstant: -15000, centralGravity: 0.03,
-              springConstant: .05, damping: 0.3, avoidOverlap: 0
-            },
-            maxVelocity: 50,
-            minVelocity: 5,
-            solver: 'barnesHut',
-            stabilization: { enabled: true, iterations: 1000, updateInterval: 200, fit: true},
-            timestep: .25,
-            adaptiveTimestep: true
-        }
-    };
-    var network = new vis.Network(container, data, options);
-  </script>
+      // DO NOT EDIT BELOW THIS LINE 
+      // create a network
+      var container = document.getElementById('yoga');
+      var data = { nodes: nodes, edges: edges };
+      var options = {
+          interaction:{ hover:true, navigationButtons: true, keyboard: true },
+          autoResize: true,
+          edges:{
+            shadow: true,
+            smooth: true,
+            chosen: true,
+            color:{ color:'black', highlight:'magenta', hover: 'lightgreen' }
+          },
+          nodes:{
+            shape: 'dot', size: 16,
+            shadow:{ enabled: true, color: 'rgba(0,0,0,0.5)', size:10, x:5, y:5 }
+          },
+          layout: { randomSeed: undefined, improvedLayout: true },
+          physics:{
+              enabled: true,
+              barnesHut: { gravitationalConstant: -15000, centralGravity: 0.03,
+                springConstant: .05, damping: 0.3, avoidOverlap: 0
+              },
+              maxVelocity: 50,
+              minVelocity: 5,
+              solver: 'barnesHut',
+              stabilization: { enabled: true, iterations: 1000, updateInterval: 200, fit: true},
+              timestep: .25,
+              adaptiveTimestep: true
+          }
+      };
+      var network = new vis.Network(container, data, options);
+    </script>
+    <div class="main-div">
+      <img class="logo" src="https://raw.githubusercontent.com/WebBreacher/yoga/master/New_logo_files/logo%20Yoga_color/logo%20Yoga_color_low_res.png">
+      <h1>Usage:</h1>
+      <ul>
+        <li>Click and drag nodes (dots) around the page to view all content</li>
+        <li>Use the arrow keys to move around and Page Down/Up to zoom out and in</li>
+        <li>If edge connecting 2 nodes has an O in the middle, mouse over it for descriptions of the actions</li>
+      </ul>
+      <hr>
+      Created by Micah "<a href="https://twitter.com/webbreacher" target="_blank">WebBreacher</a>" Hoffman.<br><br>
+      Blog post introducing YOGA: <a href="https://webbreacher.com/2018/06/24/introducing-osint-yoga/" target="_blank">https://webbreacher.com/2018/06/24/introducing-osint-yoga/</a><br><br>
+      Source is on Github at <a href="https://github.com/WebBreacher/yoga" target="_blank">https://github.com/WebBreacher/yoga</a> if you'd like to help add content or make this look prettier.
 
-  <div  style="position: absolute; left: 2; width: 13%;">
-    <img width=150px height=195px src="https://raw.githubusercontent.com/WebBreacher/yoga/master/New_logo_files/logo%20Yoga_color/logo%20Yoga_color_low_res.png">
-		<h1>Usage:</h1>
-    <ul>
-      <li>Click and drag nodes (dots) around the page to view all content</li>
-      <li>Use the arrow keys to move around and Page Down/Up to zoom out and in</li>
-      <li>If edge connecting 2 nodes has an O in the middle, mouse over it for descriptions of the actions</li>
-    </ul>
-    <hr>
-    Created by Micah "<a href="https://twitter.com/webbreacher" target="_blank">WebBreacher</a>" Hoffman.<br><br>
-    Blog post introducing YOGA: <a href="https://webbreacher.com/2018/06/24/introducing-osint-yoga/" target="_blank">https://webbreacher.com/2018/06/24/introducing-osint-yoga/</a><br><br>
-    Source is on Github at <a href="https://github.com/WebBreacher/yoga" target="_blank">https://github.com/WebBreacher/yoga</a> if you'd like to help add content or make this look prettier.
+      Thanks to <a href="https://github.com/Pelikens">Pelikens</a> for the cool logo!
+    </div>
 
-	  Thanks to <a href="https://github.com/Pelikens">Pelikens</a> for the cool logo!
-  </div>
-
-</body>
+  </body>
 </html>
