@@ -8,15 +8,16 @@
     <link rel="shortcut icon" href='/favicon.ico' type="image/x-icon" />
     <link href="files/vis-network.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133767888-3"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KL404T885J"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'UA-133767888-3');
+      gtag('config', 'G-KL404T885J');
     </script>
+
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Rubik:ital@0;1&display=swap');
       body {
@@ -44,10 +45,10 @@
         width: 13%;
       }
       .logo {
-        width: 150px; 
+        width: 150px;
         height: 195px;
       }
-      
+
     </style>
   </head>
 
@@ -149,7 +150,7 @@
           {from: 'domain', to: 'examineForServices', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Scan system for open ports'},
           {from: 'domain', to: 'hostRepSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Is domain blacklisted? known for malware?'},
           {from: 'domain', to: 'passiveDNSSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Examine DNS history'},
-          {from: 'domain', to: 'passiveDNSSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find co-located domains'},	    
+          {from: 'domain', to: 'passiveDNSSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Find co-located domains'},
           {from: 'domain', to: 'searchEngine', arrows: 'to'},
           {from: 'domain', to: 'whoisSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Harvest Whois data (if any)'},
           {from: 'email', to: 'breachSiteSearch', arrows: 'to', label: 'O', font: {align: 'middle'}, title: 'Was email found in a breach?'},
@@ -232,7 +233,7 @@
       ]);
 
 
-      // DO NOT EDIT BELOW THIS LINE 
+      // DO NOT EDIT BELOW THIS LINE
       // create a network
       var container = document.getElementById('yoga');
       var data = { nodes: nodes, edges: edges };
